@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="diancanmanager:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="diancanmanager.war">
+      <element id="artifact" artifact-name="diancanmanager:war exploded" />
+    </root>
+  </artifact>
+</component>
