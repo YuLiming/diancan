@@ -14,7 +14,7 @@
     <title>管理员登录</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath }/loginSubmit">
+<form action="${pageContext.request.contextPath }/loginSubmit" method="post">
     <table border="1">
         <tr>
             <td>用户名</td>

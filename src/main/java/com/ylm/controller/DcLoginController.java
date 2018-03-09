@@ -23,6 +23,7 @@ public class DcLoginController {
 
     @RequestMapping(value = "/loginSubmit",method = RequestMethod.POST)
     public String loginSubmit(@RequestParam(value = "name",required = false) String name,@RequestParam(value = "password",required = false) String password){
+        System.out.print(name+password);
         int result = adminService.login(name,password);
         if (result== AdminServiceImpl.LOGIN_SUCCESS){
             return "index";
