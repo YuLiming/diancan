@@ -88,6 +88,11 @@
     from dc_administrators
     where admin_id = #{adminId,jdbcType=INTEGER}
   </select>
+  <select id="selectUserByNameAndPwd" parameterType="map" resultType="DcAdministrators">
+    SELECT admin_account,admin_password
+    FROM dc_administrators
+    WHERE admin_account = #{account,jdbcType=VARCHAR} and admin_password = #{password,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from dc_administrators
     where admin_id = #{adminId,jdbcType=INTEGER}
