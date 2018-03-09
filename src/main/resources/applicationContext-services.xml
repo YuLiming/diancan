@@ -4,5 +4,6 @@
 
     <!-- 商品管理的service -->
     <bean id="itemsService" class="com.ylm.service.DcUserServiceImpl"/>
+    <bean id="adminService" class="com.ylm.service.AdminServiceImpl"/>
 
 </beans>
