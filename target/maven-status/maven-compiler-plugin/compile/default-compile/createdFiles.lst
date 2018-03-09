@@ -5,6 +5,7 @@ com\ylm\pojo\DcSysLoginLog.class
 com\ylm\mapper\DcBoardMapper.class
 com\ylm\pojo\DcEvaluationExample$Criterion.class
 com\ylm\pojo\DcFoodtypeExample.class
+com\ylm\controller\TestController.class
 com\ylm\pojo\DcCouponExample$GeneratedCriteria.class
 com\ylm\pojo\DcEvaluationExample.class
 com\ylm\pojo\DcOrderdetailsExample$GeneratedCriteria.class
