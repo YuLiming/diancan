@@ -13,7 +13,20 @@ public class DcUserServiceImpl implements DcUserService {
     DcUserMapper dcUserMapper;
 
     @Override
+    public DcUser selectByPrimaryKey(String userId) {
+        return dcUserMapper.selectByPrimaryKey(userId);
+    }
+
+    @Override
     public List<DcUser> selectByExample(DcUserExample example) {
         return dcUserMapper.selectByExample(example);
+    }
+
+    @Override
+    public int updateByPrimaryKey(DcUser record) {
+        if (record.getUserId()==null||record.getUserId().isEmpty()){
+            return -9;
+        }
+        return dcUserMapper.updateByPrimaryKey(record);
     }
 }
