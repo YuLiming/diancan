@@ -14,6 +14,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public int login(String account, String password) {
+        System.out.print(account+password);
         DcAdministrators administrators = administratorsMapper.selectUserByNameAndPwd(account,password);
         if (administrators == null){
             return LOGIN_FAILURE;
