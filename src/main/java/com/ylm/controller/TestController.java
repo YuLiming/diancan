@@ -10,7 +10,7 @@ public class TestController {
 
     @RequestMapping("test")
     public String test(Model model){
-        return "index";
+        return "login";
     }
 
 }
