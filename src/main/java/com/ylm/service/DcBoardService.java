@@ -7,4 +7,12 @@ import java.util.List;
 
 public interface DcBoardService {
     List<DcBoard> selectByExample(DcBoardExample example);
+
+    DcBoard selectByPrimaryKey(Integer boardId);
+
+    int updateByPrimaryKey(DcBoard record);
+
+    int deleteByPrimaryKey(Integer boardId);
+
+    int insert(DcBoard record);
 }

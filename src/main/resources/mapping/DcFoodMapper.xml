@@ -4,11 +4,12 @@
   <resultMap id="BaseResultMap" type="com.ylm.pojo.DcFood" >
     <id column="food_id" property="foodId" jdbcType="INTEGER" />
     <result column="food_name" property="foodName" jdbcType="VARCHAR" />
-    <result column="foodtype_id" property="foodtypeId" jdbcType="INTEGER" />
+    <result column="food_type_id" property="foodTypeId" jdbcType="INTEGER" />
     <result column="food_price" property="foodPrice" jdbcType="DECIMAL" />
     <result column="food_remark" property="foodRemark" jdbcType="VARCHAR" />
     <result column="food_grounding" property="foodGrounding" jdbcType="INTEGER" />
     <result column="food_monthlysales" property="foodMonthlysales" jdbcType="INTEGER" />
+    <result column="food_vip_price" property="foodVipPrice" jdbcType="DECIMAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +70,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    food_id, food_name, foodtype_id, food_price, food_remark, food_grounding, food_monthlysales
+    food_id, food_name, food_type_id, food_price, food_remark, food_grounding, food_monthlysales, 
+    food_vip_price
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ylm.pojo.DcFoodExample" >
     select
@@ -102,12 +104,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.ylm.pojo.DcFood" >
-    insert into dc_food (food_id, food_name, foodtype_id, 
+    insert into dc_food (food_id, food_name, food_type_id, 
       food_price, food_remark, food_grounding, 
-      food_monthlysales)
-    values (#{foodId,jdbcType=INTEGER}, #{foodName,jdbcType=VARCHAR}, #{foodtypeId,jdbcType=INTEGER}, 
+      food_monthlysales, food_vip_price)
+    values (#{foodId,jdbcType=INTEGER}, #{foodName,jdbcType=VARCHAR}, #{foodTypeId,jdbcType=INTEGER}, 
       #{foodPrice,jdbcType=DECIMAL}, #{foodRemark,jdbcType=VARCHAR}, #{foodGrounding,jdbcType=INTEGER}, 
-      #{foodMonthlysales,jdbcType=INTEGER})
+      #{foodMonthlysales,jdbcType=INTEGER}, #{foodVipPrice,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="com.ylm.pojo.DcFood" >
     insert into dc_food
@@ -118,8 +120,8 @@
       <if test="foodName != null" >
         food_name,
       </if>
-      <if test="foodtypeId != null" >
-        foodtype_id,
+      <if test="foodTypeId != null" >
+        food_type_id,
       </if>
       <if test="foodPrice != null" >
         food_price,
@@ -133,6 +135,9 @@
       <if test="foodMonthlysales != null" >
         food_monthlysales,
       </if>
+      <if test="foodVipPrice != null" >
+        food_vip_price,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="foodId != null" >
@@ -141,8 +146,8 @@
       <if test="foodName != null" >
         #{foodName,jdbcType=VARCHAR},
       </if>
-      <if test="foodtypeId != null" >
-        #{foodtypeId,jdbcType=INTEGER},
+      <if test="foodTypeId != null" >
+        #{foodTypeId,jdbcType=INTEGER},
       </if>
       <if test="foodPrice != null" >
         #{foodPrice,jdbcType=DECIMAL},
@@ -155,6 +160,9 @@
       </if>
       <if test="foodMonthlysales != null" >
         #{foodMonthlysales,jdbcType=INTEGER},
+      </if>
+      <if test="foodVipPrice != null" >
+        #{foodVipPrice,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -173,8 +181,8 @@
       <if test="record.foodName != null" >
         food_name = #{record.foodName,jdbcType=VARCHAR},
       </if>
-      <if test="record.foodtypeId != null" >
-        foodtype_id = #{record.foodtypeId,jdbcType=INTEGER},
+      <if test="record.foodTypeId != null" >
+        food_type_id = #{record.foodTypeId,jdbcType=INTEGER},
       </if>
       <if test="record.foodPrice != null" >
         food_price = #{record.foodPrice,jdbcType=DECIMAL},
@@ -188,6 +196,9 @@
       <if test="record.foodMonthlysales != null" >
         food_monthlysales = #{record.foodMonthlysales,jdbcType=INTEGER},
       </if>
+      <if test="record.foodVipPrice != null" >
+        food_vip_price = #{record.foodVipPrice,jdbcType=DECIMAL},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -197,11 +208,12 @@
     update dc_food
     set food_id = #{record.foodId,jdbcType=INTEGER},
       food_name = #{record.foodName,jdbcType=VARCHAR},
-      foodtype_id = #{record.foodtypeId,jdbcType=INTEGER},
+      food_type_id = #{record.foodTypeId,jdbcType=INTEGER},
       food_price = #{record.foodPrice,jdbcType=DECIMAL},
       food_remark = #{record.foodRemark,jdbcType=VARCHAR},
       food_grounding = #{record.foodGrounding,jdbcType=INTEGER},
-      food_monthlysales = #{record.foodMonthlysales,jdbcType=INTEGER}
+      food_monthlysales = #{record.foodMonthlysales,jdbcType=INTEGER},
+      food_vip_price = #{record.foodVipPrice,jdbcType=DECIMAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -212,8 +224,8 @@
       <if test="foodName != null" >
         food_name = #{foodName,jdbcType=VARCHAR},
       </if>
-      <if test="foodtypeId != null" >
-        foodtype_id = #{foodtypeId,jdbcType=INTEGER},
+      <if test="foodTypeId != null" >
+        food_type_id = #{foodTypeId,jdbcType=INTEGER},
       </if>
       <if test="foodPrice != null" >
         food_price = #{foodPrice,jdbcType=DECIMAL},
@@ -227,17 +239,21 @@
       <if test="foodMonthlysales != null" >
         food_monthlysales = #{foodMonthlysales,jdbcType=INTEGER},
       </if>
+      <if test="foodVipPrice != null" >
+        food_vip_price = #{foodVipPrice,jdbcType=DECIMAL},
+      </if>
     </set>
     where food_id = #{foodId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ylm.pojo.DcFood" >
     update dc_food
     set food_name = #{foodName,jdbcType=VARCHAR},
-      foodtype_id = #{foodtypeId,jdbcType=INTEGER},
+      food_type_id = #{foodTypeId,jdbcType=INTEGER},
       food_price = #{foodPrice,jdbcType=DECIMAL},
       food_remark = #{foodRemark,jdbcType=VARCHAR},
       food_grounding = #{foodGrounding,jdbcType=INTEGER},
-      food_monthlysales = #{foodMonthlysales,jdbcType=INTEGER}
+      food_monthlysales = #{foodMonthlysales,jdbcType=INTEGER},
+      food_vip_price = #{foodVipPrice,jdbcType=DECIMAL}
     where food_id = #{foodId,jdbcType=INTEGER}
   </update>
 </mapper>

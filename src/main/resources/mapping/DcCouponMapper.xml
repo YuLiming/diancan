@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ylm.mapper.DcCouponMapper" >
   <resultMap id="BaseResultMap" type="com.ylm.pojo.DcCoupon" >
-    <id column="coupon_id" property="couponId" jdbcType="INTEGER" />
+    <id column="coupon_id" property="couponId" jdbcType="VARCHAR" />
     <result column="consumption_amount" property="consumptionAmount" jdbcType="INTEGER" />
     <result column="discount" property="discount" jdbcType="INTEGER" />
     <result column="expiry_time" property="expiryTime" jdbcType="DATE" />
@@ -82,15 +82,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from dc_coupon
-    where coupon_id = #{couponId,jdbcType=INTEGER}
+    where coupon_id = #{couponId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from dc_coupon
-    where coupon_id = #{couponId,jdbcType=INTEGER}
+    where coupon_id = #{couponId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.ylm.pojo.DcCouponExample" >
     delete from dc_coupon
@@ -101,7 +101,7 @@
   <insert id="insert" parameterType="com.ylm.pojo.DcCoupon" >
     insert into dc_coupon (coupon_id, consumption_amount, discount, 
       expiry_time)
-    values (#{couponId,jdbcType=INTEGER}, #{consumptionAmount,jdbcType=INTEGER}, #{discount,jdbcType=INTEGER}, 
+    values (#{couponId,jdbcType=VARCHAR}, #{consumptionAmount,jdbcType=INTEGER}, #{discount,jdbcType=INTEGER}, 
       #{expiryTime,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="com.ylm.pojo.DcCoupon" >
@@ -122,7 +122,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="couponId != null" >
-        #{couponId,jdbcType=INTEGER},
+        #{couponId,jdbcType=VARCHAR},
       </if>
       <if test="consumptionAmount != null" >
         #{consumptionAmount,jdbcType=INTEGER},
@@ -145,7 +145,7 @@
     update dc_coupon
     <set >
       <if test="record.couponId != null" >
-        coupon_id = #{record.couponId,jdbcType=INTEGER},
+        coupon_id = #{record.couponId,jdbcType=VARCHAR},
       </if>
       <if test="record.consumptionAmount != null" >
         consumption_amount = #{record.consumptionAmount,jdbcType=INTEGER},
@@ -163,7 +163,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update dc_coupon
-    set coupon_id = #{record.couponId,jdbcType=INTEGER},
+    set coupon_id = #{record.couponId,jdbcType=VARCHAR},
       consumption_amount = #{record.consumptionAmount,jdbcType=INTEGER},
       discount = #{record.discount,jdbcType=INTEGER},
       expiry_time = #{record.expiryTime,jdbcType=DATE}
@@ -184,13 +184,13 @@
         expiry_time = #{expiryTime,jdbcType=DATE},
       </if>
     </set>
-    where coupon_id = #{couponId,jdbcType=INTEGER}
+    where coupon_id = #{couponId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ylm.pojo.DcCoupon" >
     update dc_coupon
     set consumption_amount = #{consumptionAmount,jdbcType=INTEGER},
       discount = #{discount,jdbcType=INTEGER},
       expiry_time = #{expiryTime,jdbcType=DATE}
-    where coupon_id = #{couponId,jdbcType=INTEGER}
+    where coupon_id = #{couponId,jdbcType=VARCHAR}
   </update>
 </mapper>

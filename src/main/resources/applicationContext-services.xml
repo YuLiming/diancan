@@ -5,5 +5,8 @@
     <!-- 商品管理的service -->
     <bean id="itemsService" class="com.ylm.service.DcUserServiceImpl"/>
     <bean id="adminService" class="com.ylm.service.AdminServiceImpl"/>
+    <bean id="boardService" class="com.ylm.service.DcBoardServiceImpl"/>
+    <bean id="foodService" class="com.ylm.service.DcFoodServiceImpl"/>
+    <bean id="foodTypeService" class="com.ylm.service.DcFoodTypeServiceImpl"/>
 
 </beans>

@@ -17,7 +17,15 @@ public class DcOrder {
 
     private Integer orderTotalAmount;
 
-    private Integer orderStatus;
+    private String orderStatus;
+
+    private String userId;
+
+    private String couponId;
+
+    private String orderFood;
+
+    private String orderFoodNum;
 
     public String getOrderId() {
         return orderId;
@@ -75,11 +83,43 @@ public class DcOrder {
         this.orderTotalAmount = orderTotalAmount;
     }
 
-    public Integer getOrderStatus() {
+    public String getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(Integer orderStatus) {
-        this.orderStatus = orderStatus;
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus == null ? null : orderStatus.trim();
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
+    }
+
+    public String getCouponId() {
+        return couponId;
+    }
+
+    public void setCouponId(String couponId) {
+        this.couponId = couponId == null ? null : couponId.trim();
+    }
+
+    public String getOrderFood() {
+        return orderFood;
+    }
+
+    public void setOrderFood(String orderFood) {
+        this.orderFood = orderFood == null ? null : orderFood.trim();
+    }
+
+    public String getOrderFoodNum() {
+        return orderFoodNum;
+    }
+
+    public void setOrderFoodNum(String orderFoodNum) {
+        this.orderFoodNum = orderFoodNum == null ? null : orderFoodNum.trim();
     }
 }

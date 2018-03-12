@@ -235,63 +235,63 @@ public class DcFoodExample {
             return (Criteria) this;
         }
 
-        public Criteria andFoodtypeIdIsNull() {
-            addCriterion("foodtype_id is null");
+        public Criteria andFoodTypeIdIsNull() {
+            addCriterion("food_type_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andFoodtypeIdIsNotNull() {
-            addCriterion("foodtype_id is not null");
+        public Criteria andFoodTypeIdIsNotNull() {
+            addCriterion("food_type_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFoodtypeIdEqualTo(Integer value) {
-            addCriterion("foodtype_id =", value, "foodtypeId");
+        public Criteria andFoodTypeIdEqualTo(Integer value) {
+            addCriterion("food_type_id =", value, "foodTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andFoodtypeIdNotEqualTo(Integer value) {
-            addCriterion("foodtype_id <>", value, "foodtypeId");
+        public Criteria andFoodTypeIdNotEqualTo(Integer value) {
+            addCriterion("food_type_id <>", value, "foodTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andFoodtypeIdGreaterThan(Integer value) {
-            addCriterion("foodtype_id >", value, "foodtypeId");
+        public Criteria andFoodTypeIdGreaterThan(Integer value) {
+            addCriterion("food_type_id >", value, "foodTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andFoodtypeIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("foodtype_id >=", value, "foodtypeId");
+        public Criteria andFoodTypeIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("food_type_id >=", value, "foodTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andFoodtypeIdLessThan(Integer value) {
-            addCriterion("foodtype_id <", value, "foodtypeId");
+        public Criteria andFoodTypeIdLessThan(Integer value) {
+            addCriterion("food_type_id <", value, "foodTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andFoodtypeIdLessThanOrEqualTo(Integer value) {
-            addCriterion("foodtype_id <=", value, "foodtypeId");
+        public Criteria andFoodTypeIdLessThanOrEqualTo(Integer value) {
+            addCriterion("food_type_id <=", value, "foodTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andFoodtypeIdIn(List<Integer> values) {
-            addCriterion("foodtype_id in", values, "foodtypeId");
+        public Criteria andFoodTypeIdIn(List<Integer> values) {
+            addCriterion("food_type_id in", values, "foodTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andFoodtypeIdNotIn(List<Integer> values) {
-            addCriterion("foodtype_id not in", values, "foodtypeId");
+        public Criteria andFoodTypeIdNotIn(List<Integer> values) {
+            addCriterion("food_type_id not in", values, "foodTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andFoodtypeIdBetween(Integer value1, Integer value2) {
-            addCriterion("foodtype_id between", value1, value2, "foodtypeId");
+        public Criteria andFoodTypeIdBetween(Integer value1, Integer value2) {
+            addCriterion("food_type_id between", value1, value2, "foodTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andFoodtypeIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("foodtype_id not between", value1, value2, "foodtypeId");
+        public Criteria andFoodTypeIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("food_type_id not between", value1, value2, "foodTypeId");
             return (Criteria) this;
         }
 
@@ -542,6 +542,66 @@ public class DcFoodExample {
 
         public Criteria andFoodMonthlysalesNotBetween(Integer value1, Integer value2) {
             addCriterion("food_monthlysales not between", value1, value2, "foodMonthlysales");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodVipPriceIsNull() {
+            addCriterion("food_vip_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodVipPriceIsNotNull() {
+            addCriterion("food_vip_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodVipPriceEqualTo(BigDecimal value) {
+            addCriterion("food_vip_price =", value, "foodVipPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodVipPriceNotEqualTo(BigDecimal value) {
+            addCriterion("food_vip_price <>", value, "foodVipPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodVipPriceGreaterThan(BigDecimal value) {
+            addCriterion("food_vip_price >", value, "foodVipPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodVipPriceGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("food_vip_price >=", value, "foodVipPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodVipPriceLessThan(BigDecimal value) {
+            addCriterion("food_vip_price <", value, "foodVipPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodVipPriceLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("food_vip_price <=", value, "foodVipPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodVipPriceIn(List<BigDecimal> values) {
+            addCriterion("food_vip_price in", values, "foodVipPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodVipPriceNotIn(List<BigDecimal> values) {
+            addCriterion("food_vip_price not in", values, "foodVipPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodVipPriceBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("food_vip_price between", value1, value2, "foodVipPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodVipPriceNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("food_vip_price not between", value1, value2, "foodVipPrice");
             return (Criteria) this;
         }
     }

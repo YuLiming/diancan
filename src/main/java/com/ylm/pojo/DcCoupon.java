@@ -3,7 +3,7 @@ package com.ylm.pojo;
 import java.util.Date;
 
 public class DcCoupon {
-    private Integer couponId;
+    private String couponId;
 
     private Integer consumptionAmount;
 
@@ -11,12 +11,12 @@ public class DcCoupon {
 
     private Date expiryTime;
 
-    public Integer getCouponId() {
+    public String getCouponId() {
         return couponId;
     }
 
-    public void setCouponId(Integer couponId) {
-        this.couponId = couponId;
+    public void setCouponId(String couponId) {
+        this.couponId = couponId == null ? null : couponId.trim();
     }
 
     public Integer getConsumptionAmount() {

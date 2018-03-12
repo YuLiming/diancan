@@ -7,7 +7,7 @@ public class DcFood {
 
     private String foodName;
 
-    private Integer foodtypeId;
+    private Integer foodTypeId;
 
     private BigDecimal foodPrice;
 
@@ -16,6 +16,8 @@ public class DcFood {
     private Integer foodGrounding;
 
     private Integer foodMonthlysales;
+
+    private BigDecimal foodVipPrice;
 
     public Integer getFoodId() {
         return foodId;
@@ -33,12 +35,12 @@ public class DcFood {
         this.foodName = foodName == null ? null : foodName.trim();
     }
 
-    public Integer getFoodtypeId() {
-        return foodtypeId;
+    public Integer getFoodTypeId() {
+        return foodTypeId;
     }
 
-    public void setFoodtypeId(Integer foodtypeId) {
-        this.foodtypeId = foodtypeId;
+    public void setFoodTypeId(Integer foodTypeId) {
+        this.foodTypeId = foodTypeId;
     }
 
     public BigDecimal getFoodPrice() {
@@ -71,5 +73,13 @@ public class DcFood {
 
     public void setFoodMonthlysales(Integer foodMonthlysales) {
         this.foodMonthlysales = foodMonthlysales;
+    }
+
+    public BigDecimal getFoodVipPrice() {
+        return foodVipPrice;
+    }
+
+    public void setFoodVipPrice(BigDecimal foodVipPrice) {
+        this.foodVipPrice = foodVipPrice;
     }
 }
