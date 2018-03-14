@@ -31,6 +31,8 @@
     <mvc:resources mapping="/image/**" location="/statics/img/"/>
     <mvc:resources mapping="/plugins/**" location="/statics/plugins/"/>
     <mvc:resources mapping="/fonts/**" location="/statics/fonts/"/>
+    <mvc:resources mapping="/vendor/**" location="/statics/vendor/"/>
+    <mvc:resources mapping="/dist/**" location="/statics/dist/"/>
 
     <!-- 配置注解驱动 可以将request参数与绑定到controller参数上 -->
     <mvc:annotation-driven/>
