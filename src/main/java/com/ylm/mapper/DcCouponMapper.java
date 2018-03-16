@@ -27,4 +27,6 @@ public interface DcCouponMapper {
     int updateByPrimaryKeySelective(DcCoupon record);
 
     int updateByPrimaryKey(DcCoupon record);
+
+    int deleteByPrimaryKeys(List<Integer> data);
 }

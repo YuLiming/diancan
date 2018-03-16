@@ -9,5 +9,6 @@
     <bean id="foodService" class="com.ylm.service.DcFoodServiceImpl"/>
     <bean id="foodTypeService" class="com.ylm.service.DcFoodTypeServiceImpl"/>
     <bean id="orderService" class="com.ylm.service.DcOrderServiceImpl"/>
+    <bean id="couponService" class="com.ylm.service.DcCouponServiceImpl"/>
 
 </beans>

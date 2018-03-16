@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    coupon_id, consumption_amount, discount, expiry_time, remark, coupon_isDel
+    coupon_id, consumption_amount, discount, expiry_time, remark, coupon_isDel, start_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ylm.pojo.DcCouponExample" >
     select
@@ -86,13 +86,14 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from dc_coupon
     where coupon_id = #{couponId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from dc_coupon
+    UPDATE dc_coupon
+    SET coupon_isDel = 1
     where coupon_id = #{couponId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.ylm.pojo.DcCouponExample" >
@@ -102,12 +103,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.ylm.pojo.DcCoupon" >
-    insert into dc_coupon (coupon_id, consumption_amount, discount, 
-      expiry_time, remark, coupon_isDel
-      )
-    values (#{couponId,jdbcType=INTEGER}, #{consumptionAmount,jdbcType=INTEGER}, #{discount,jdbcType=INTEGER}, 
-      #{expiryTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{couponIsdel,jdbcType=INTEGER}
-      )
+    insert into dc_coupon (coupon_id, consumption_amount, discount,
+    expiry_time, remark, coupon_isDel,
+    start_time)
+    values (#{couponId,jdbcType=INTEGER}, #{consumptionAmount,jdbcType=INTEGER}, #{discount,jdbcType=INTEGER},
+    #{expiryTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{couponIsdel,jdbcType=INTEGER},
+    #{startTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.ylm.pojo.DcCoupon" >
     insert into dc_coupon
@@ -130,6 +131,9 @@
       <if test="couponIsdel != null" >
         coupon_isDel,
       </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="couponId != null" >
@@ -149,6 +153,9 @@
       </if>
       <if test="couponIsdel != null" >
         #{couponIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -179,6 +186,9 @@
       <if test="record.couponIsdel != null" >
         coupon_isDel = #{record.couponIsdel,jdbcType=INTEGER},
       </if>
+      <if test="record.startTime != null" >
+        start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -187,11 +197,12 @@
   <update id="updateByExample" parameterType="map" >
     update dc_coupon
     set coupon_id = #{record.couponId,jdbcType=INTEGER},
-      consumption_amount = #{record.consumptionAmount,jdbcType=INTEGER},
-      discount = #{record.discount,jdbcType=INTEGER},
-      expiry_time = #{record.expiryTime,jdbcType=TIMESTAMP},
-      remark = #{record.remark,jdbcType=VARCHAR},
-      coupon_isDel = #{record.couponIsdel,jdbcType=INTEGER}
+    consumption_amount = #{record.consumptionAmount,jdbcType=INTEGER},
+    discount = #{record.discount,jdbcType=INTEGER},
+    expiry_time = #{record.expiryTime,jdbcType=TIMESTAMP},
+    remark = #{record.remark,jdbcType=VARCHAR},
+    coupon_isDel = #{record.couponIsdel,jdbcType=INTEGER},
+    start_time = #{record.startTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -214,6 +225,9 @@
       <if test="couponIsdel != null" >
         coupon_isDel = #{couponIsdel,jdbcType=INTEGER},
       </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where coupon_id = #{couponId,jdbcType=INTEGER}
   </update>
@@ -223,7 +237,18 @@
       discount = #{discount,jdbcType=INTEGER},
       expiry_time = #{expiryTime,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR},
-      coupon_isDel = #{couponIsdel,jdbcType=INTEGER}
+      coupon_isDel = #{couponIsdel,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=TIMESTAMP}
     where coupon_id = #{couponId,jdbcType=INTEGER}
+  </update>
+
+  <update id="deleteByPrimaryKeys" parameterType="java.util.List">
+    UPDATE dc_coupon
+    SET coupon_isDel = 1
+    WHERE coupon_id IN
+    <foreach collection="list" index="index" item="item"
+             separator="," open="(" close=")">
+      #{item,jdbcType=INTEGER}
+    </foreach>
   </update>
 </mapper>
