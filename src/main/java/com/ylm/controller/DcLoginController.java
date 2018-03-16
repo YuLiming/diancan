@@ -70,8 +70,8 @@ public class DcLoginController {
     @ResponseBody
     public Object deleteAdmin(@RequestParam(value = "id",required = false,defaultValue = "1")Integer id){
         return adminService.deleteByPrimaryKey(id)>0?
-                new BaseResult(true,""):
-                new BaseResult(false,"");
+                new BaseResult(true,"删除管理员成功"):
+                new BaseResult(false,"删除管理员失败");
     }
 
 

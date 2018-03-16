@@ -29,4 +29,6 @@ public interface DcFoodMapper {
     int updateByPrimaryKey(DcFood record);
 
     int deleteByPrimaryKeys(List<Integer> data);
+
+    List<DcFood> selectByPrimaryKeys(List<String> foodIds);
 }

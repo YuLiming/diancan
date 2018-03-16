@@ -1,12 +1,8 @@
 package com.ylm.controller;
 
-import com.ylm.pojo.DcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 @Controller
 public class TestController {

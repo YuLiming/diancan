@@ -23,6 +23,11 @@ public class DcFoodServiceImpl implements DcFoodService {
     }
 
     @Override
+    public List<DcFood> selectByPrimaryKeys(List<String> foodIds) {
+        return dcFoodMapper.selectByPrimaryKeys(foodIds);
+    }
+
+    @Override
     public int updateByPrimaryKey(DcFood record) {
         return dcFoodMapper.updateByPrimaryKey(record);
     }

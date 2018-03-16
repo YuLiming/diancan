@@ -1,12 +1,9 @@
 package com.ylm.controller;
 
 import com.ylm.common.BaseResult;
-import com.ylm.pojo.DcUser;
 import com.ylm.service.DcUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -52,8 +49,8 @@ public class DcUserController {
     @ResponseBody
     public Object deleteUser(@RequestParam(value = "id",required = false,defaultValue = "1") String id){
         return dcUserService.deleteByPrimaryKey(id)>0?
-                new BaseResult(true,""):
-                new BaseResult(false,"");
+                new BaseResult(true,"删除用户成功"):
+                new BaseResult(false,"删除用户失败");
     }
 
     @RequestMapping("/newUserSubmit")

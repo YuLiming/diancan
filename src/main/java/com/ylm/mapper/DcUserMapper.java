@@ -1,7 +1,5 @@
 package com.ylm.mapper;
 
-import com.ylm.pojo.DcUser;
-import com.ylm.pojo.DcUserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
