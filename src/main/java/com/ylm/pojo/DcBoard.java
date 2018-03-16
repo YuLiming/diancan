@@ -9,6 +9,8 @@ public class DcBoard {
 
     private Integer boardType;
 
+    private Integer boardIsdel;
+
     public Integer getBoardId() {
         return boardId;
     }
@@ -39,5 +41,13 @@ public class DcBoard {
 
     public void setBoardType(Integer boardType) {
         this.boardType = boardType;
+    }
+
+    public Integer getBoardIsdel() {
+        return boardIsdel;
+    }
+
+    public void setBoardIsdel(Integer boardIsdel) {
+        this.boardIsdel = boardIsdel;
     }
 }

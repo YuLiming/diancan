@@ -29,4 +29,6 @@ public interface DcAdministratorsMapper {
     int updateByPrimaryKeySelective(DcAdministrators record);
 
     int updateByPrimaryKey(DcAdministrators record);
+
+    int deleteByPrimaryKeys(List<Integer> data);
 }

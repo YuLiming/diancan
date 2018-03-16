@@ -353,6 +353,66 @@ public class DcBoardExample {
             addCriterion("board_type not between", value1, value2, "boardType");
             return (Criteria) this;
         }
+
+        public Criteria andBoardIsdelIsNull() {
+            addCriterion("board_isDel is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIsdelIsNotNull() {
+            addCriterion("board_isDel is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIsdelEqualTo(Integer value) {
+            addCriterion("board_isDel =", value, "boardIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIsdelNotEqualTo(Integer value) {
+            addCriterion("board_isDel <>", value, "boardIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIsdelGreaterThan(Integer value) {
+            addCriterion("board_isDel >", value, "boardIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIsdelGreaterThanOrEqualTo(Integer value) {
+            addCriterion("board_isDel >=", value, "boardIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIsdelLessThan(Integer value) {
+            addCriterion("board_isDel <", value, "boardIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIsdelLessThanOrEqualTo(Integer value) {
+            addCriterion("board_isDel <=", value, "boardIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIsdelIn(List<Integer> values) {
+            addCriterion("board_isDel in", values, "boardIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIsdelNotIn(List<Integer> values) {
+            addCriterion("board_isDel not in", values, "boardIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIsdelBetween(Integer value1, Integer value2) {
+            addCriterion("board_isDel between", value1, value2, "boardIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIsdelNotBetween(Integer value1, Integer value2) {
+            addCriterion("board_isDel not between", value1, value2, "boardIsdel");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

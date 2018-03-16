@@ -10,7 +10,7 @@ public interface DcCouponMapper {
 
     int deleteByExample(DcCouponExample example);
 
-    int deleteByPrimaryKey(String couponId);
+    int deleteByPrimaryKey(Integer couponId);
 
     int insert(DcCoupon record);
 
@@ -18,7 +18,7 @@ public interface DcCouponMapper {
 
     List<DcCoupon> selectByExample(DcCouponExample example);
 
-    DcCoupon selectByPrimaryKey(String couponId);
+    DcCoupon selectByPrimaryKey(Integer couponId);
 
     int updateByExampleSelective(@Param("record") DcCoupon record, @Param("example") DcCouponExample example);
 

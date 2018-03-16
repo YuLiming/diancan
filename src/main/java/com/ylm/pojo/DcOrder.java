@@ -1,5 +1,6 @@
 package com.ylm.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class DcOrder {
@@ -15,7 +16,7 @@ public class DcOrder {
 
     private String orderBoardTimeInterval;
 
-    private Integer orderTotalAmount;
+    private BigDecimal orderTotalAmount;
 
     private String orderStatus;
 
@@ -26,6 +27,8 @@ public class DcOrder {
     private String orderFood;
 
     private String orderFoodNum;
+
+    private BigDecimal orderDiscountAmount;
 
     public String getOrderId() {
         return orderId;
@@ -75,11 +78,11 @@ public class DcOrder {
         this.orderBoardTimeInterval = orderBoardTimeInterval == null ? null : orderBoardTimeInterval.trim();
     }
 
-    public Integer getOrderTotalAmount() {
+    public BigDecimal getOrderTotalAmount() {
         return orderTotalAmount;
     }
 
-    public void setOrderTotalAmount(Integer orderTotalAmount) {
+    public void setOrderTotalAmount(BigDecimal orderTotalAmount) {
         this.orderTotalAmount = orderTotalAmount;
     }
 
@@ -121,5 +124,13 @@ public class DcOrder {
 
     public void setOrderFoodNum(String orderFoodNum) {
         this.orderFoodNum = orderFoodNum == null ? null : orderFoodNum.trim();
+    }
+
+    public BigDecimal getOrderDiscountAmount() {
+        return orderDiscountAmount;
+    }
+
+    public void setOrderDiscountAmount(BigDecimal orderDiscountAmount) {
+        this.orderDiscountAmount = orderDiscountAmount;
     }
 }

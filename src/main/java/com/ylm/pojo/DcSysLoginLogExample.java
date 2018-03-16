@@ -165,66 +165,6 @@ public class DcSysLoginLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andAdminIdIsNull() {
-            addCriterion("admin_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdminIdIsNotNull() {
-            addCriterion("admin_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdminIdEqualTo(Integer value) {
-            addCriterion("admin_id =", value, "adminId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdminIdNotEqualTo(Integer value) {
-            addCriterion("admin_id <>", value, "adminId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdminIdGreaterThan(Integer value) {
-            addCriterion("admin_id >", value, "adminId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdminIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("admin_id >=", value, "adminId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdminIdLessThan(Integer value) {
-            addCriterion("admin_id <", value, "adminId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdminIdLessThanOrEqualTo(Integer value) {
-            addCriterion("admin_id <=", value, "adminId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdminIdIn(List<Integer> values) {
-            addCriterion("admin_id in", values, "adminId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdminIdNotIn(List<Integer> values) {
-            addCriterion("admin_id not in", values, "adminId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdminIdBetween(Integer value1, Integer value2) {
-            addCriterion("admin_id between", value1, value2, "adminId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdminIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("admin_id not between", value1, value2, "adminId");
-            return (Criteria) this;
-        }
-
         public Criteria andLlLoginDateIsNull() {
             addCriterion("ll_login_date is null");
             return (Criteria) this;
@@ -355,63 +295,73 @@ public class DcSysLoginLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andLlStatusIsNull() {
-            addCriterion("ll_status is null");
+        public Criteria andLlReqUrlIsNull() {
+            addCriterion("ll_req_url is null");
             return (Criteria) this;
         }
 
-        public Criteria andLlStatusIsNotNull() {
-            addCriterion("ll_status is not null");
+        public Criteria andLlReqUrlIsNotNull() {
+            addCriterion("ll_req_url is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLlStatusEqualTo(Integer value) {
-            addCriterion("ll_status =", value, "llStatus");
+        public Criteria andLlReqUrlEqualTo(String value) {
+            addCriterion("ll_req_url =", value, "llReqUrl");
             return (Criteria) this;
         }
 
-        public Criteria andLlStatusNotEqualTo(Integer value) {
-            addCriterion("ll_status <>", value, "llStatus");
+        public Criteria andLlReqUrlNotEqualTo(String value) {
+            addCriterion("ll_req_url <>", value, "llReqUrl");
             return (Criteria) this;
         }
 
-        public Criteria andLlStatusGreaterThan(Integer value) {
-            addCriterion("ll_status >", value, "llStatus");
+        public Criteria andLlReqUrlGreaterThan(String value) {
+            addCriterion("ll_req_url >", value, "llReqUrl");
             return (Criteria) this;
         }
 
-        public Criteria andLlStatusGreaterThanOrEqualTo(Integer value) {
-            addCriterion("ll_status >=", value, "llStatus");
+        public Criteria andLlReqUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("ll_req_url >=", value, "llReqUrl");
             return (Criteria) this;
         }
 
-        public Criteria andLlStatusLessThan(Integer value) {
-            addCriterion("ll_status <", value, "llStatus");
+        public Criteria andLlReqUrlLessThan(String value) {
+            addCriterion("ll_req_url <", value, "llReqUrl");
             return (Criteria) this;
         }
 
-        public Criteria andLlStatusLessThanOrEqualTo(Integer value) {
-            addCriterion("ll_status <=", value, "llStatus");
+        public Criteria andLlReqUrlLessThanOrEqualTo(String value) {
+            addCriterion("ll_req_url <=", value, "llReqUrl");
             return (Criteria) this;
         }
 
-        public Criteria andLlStatusIn(List<Integer> values) {
-            addCriterion("ll_status in", values, "llStatus");
+        public Criteria andLlReqUrlLike(String value) {
+            addCriterion("ll_req_url like", value, "llReqUrl");
             return (Criteria) this;
         }
 
-        public Criteria andLlStatusNotIn(List<Integer> values) {
-            addCriterion("ll_status not in", values, "llStatus");
+        public Criteria andLlReqUrlNotLike(String value) {
+            addCriterion("ll_req_url not like", value, "llReqUrl");
             return (Criteria) this;
         }
 
-        public Criteria andLlStatusBetween(Integer value1, Integer value2) {
-            addCriterion("ll_status between", value1, value2, "llStatus");
+        public Criteria andLlReqUrlIn(List<String> values) {
+            addCriterion("ll_req_url in", values, "llReqUrl");
             return (Criteria) this;
         }
 
-        public Criteria andLlStatusNotBetween(Integer value1, Integer value2) {
-            addCriterion("ll_status not between", value1, value2, "llStatus");
+        public Criteria andLlReqUrlNotIn(List<String> values) {
+            addCriterion("ll_req_url not in", values, "llReqUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLlReqUrlBetween(String value1, String value2) {
+            addCriterion("ll_req_url between", value1, value2, "llReqUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLlReqUrlNotBetween(String value1, String value2) {
+            addCriterion("ll_req_url not between", value1, value2, "llReqUrl");
             return (Criteria) this;
         }
     }

@@ -34,4 +34,9 @@ public class DcFoodTypeServiceImpl implements DcFoodTypeService {
     public int deleteByPrimaryKey(Integer foodtypeId) {
         return dcFoodtypeMapper.deleteByPrimaryKey(foodtypeId);
     }
+
+    @Override
+    public int deleteByPrimaryKeys(List<Integer> data) {
+        return dcFoodtypeMapper.deleteByPrimaryKeys(data);
+    }
 }

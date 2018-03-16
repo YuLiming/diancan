@@ -29,4 +29,21 @@ public class DcUserServiceImpl implements DcUserService {
         }
         return dcUserMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public int deleteByPrimaryKey(String userId) {
+        return dcUserMapper.deleteByPrimaryKey(userId);
+    }
+
+    @Override
+    public int insert(DcUser record) {
+        return dcUserMapper.insert(record);
+    }
+
+    @Override
+    public int deleteByPrimaryKeys(List<Integer> userId) {
+        return dcUserMapper.deleteByPrimaryKeys(userId);
+    }
+
+
 }

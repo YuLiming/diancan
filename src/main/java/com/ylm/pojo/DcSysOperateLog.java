@@ -11,7 +11,7 @@ public class DcSysOperateLog {
 
     private String olContent;
 
-    private Integer userId;
+    private Integer adminId;
 
     private Date olAddDate;
 
@@ -51,12 +51,12 @@ public class DcSysOperateLog {
         this.olContent = olContent == null ? null : olContent.trim();
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getAdminId() {
+        return adminId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setAdminId(Integer adminId) {
+        this.adminId = adminId;
     }
 
     public Date getOlAddDate() {

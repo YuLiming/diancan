@@ -9,6 +9,8 @@ public class DcAdministrators {
 
     private Integer adminRights;
 
+    private Integer adminIsdel;
+
     public Integer getAdminId() {
         return adminId;
     }
@@ -39,5 +41,13 @@ public class DcAdministrators {
 
     public void setAdminRights(Integer adminRights) {
         this.adminRights = adminRights;
+    }
+
+    public Integer getAdminIsdel() {
+        return adminIsdel;
+    }
+
+    public void setAdminIsdel(Integer adminIsdel) {
+        this.adminIsdel = adminIsdel;
     }
 }

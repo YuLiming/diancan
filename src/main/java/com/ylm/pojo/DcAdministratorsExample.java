@@ -363,6 +363,66 @@ public class DcAdministratorsExample {
             addCriterion("admin_rights not between", value1, value2, "adminRights");
             return (Criteria) this;
         }
+
+        public Criteria andAdminIsdelIsNull() {
+            addCriterion("admin_isDel is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminIsdelIsNotNull() {
+            addCriterion("admin_isDel is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminIsdelEqualTo(Integer value) {
+            addCriterion("admin_isDel =", value, "adminIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminIsdelNotEqualTo(Integer value) {
+            addCriterion("admin_isDel <>", value, "adminIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminIsdelGreaterThan(Integer value) {
+            addCriterion("admin_isDel >", value, "adminIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminIsdelGreaterThanOrEqualTo(Integer value) {
+            addCriterion("admin_isDel >=", value, "adminIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminIsdelLessThan(Integer value) {
+            addCriterion("admin_isDel <", value, "adminIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminIsdelLessThanOrEqualTo(Integer value) {
+            addCriterion("admin_isDel <=", value, "adminIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminIsdelIn(List<Integer> values) {
+            addCriterion("admin_isDel in", values, "adminIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminIsdelNotIn(List<Integer> values) {
+            addCriterion("admin_isDel not in", values, "adminIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminIsdelBetween(Integer value1, Integer value2) {
+            addCriterion("admin_isDel between", value1, value2, "adminIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminIsdelNotBetween(Integer value1, Integer value2) {
+            addCriterion("admin_isDel not between", value1, value2, "adminIsdel");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

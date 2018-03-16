@@ -36,4 +36,9 @@ public class DcBoardServiceImpl implements DcBoardService {
     public int insert(DcBoard record) {
         return dcBoardMapper.insert(record);
     }
+
+    @Override
+    public int deleteByPrimaryKeys(List<Integer> data) {
+        return dcBoardMapper.deleteByPrimaryKeys(data);
+    }
 }

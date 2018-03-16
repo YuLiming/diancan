@@ -15,4 +15,6 @@ public interface DcFoodService {
     int deleteByPrimaryKey(Integer foodId);
 
     int insert(DcFood record);
+
+    int deleteByPrimaryKeys(List<Integer> data);
 }

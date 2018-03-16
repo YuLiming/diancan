@@ -3,10 +3,9 @@
 <mapper namespace="com.ylm.mapper.DcSysLoginLogMapper" >
   <resultMap id="BaseResultMap" type="com.ylm.pojo.DcSysLoginLog" >
     <id column="ll_id" property="llId" jdbcType="INTEGER" />
-    <result column="admin_id" property="adminId" jdbcType="INTEGER" />
     <result column="ll_login_date" property="llLoginDate" jdbcType="TIMESTAMP" />
     <result column="ll_ip" property="llIp" jdbcType="VARCHAR" />
-    <result column="ll_status" property="llStatus" jdbcType="INTEGER" />
+    <result column="ll_req_url" property="llReqUrl" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ll_id, admin_id, ll_login_date, ll_ip, ll_status
+    ll_id, ll_login_date, ll_ip, ll_req_url
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ylm.pojo.DcSysLoginLogExample" >
     select
@@ -100,10 +99,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.ylm.pojo.DcSysLoginLog" >
-    insert into dc_sys_login_log (ll_id, admin_id, ll_login_date, 
-      ll_ip, ll_status)
-    values (#{llId,jdbcType=INTEGER}, #{adminId,jdbcType=INTEGER}, #{llLoginDate,jdbcType=TIMESTAMP}, 
-      #{llIp,jdbcType=VARCHAR}, #{llStatus,jdbcType=INTEGER})
+    insert into dc_sys_login_log (ll_id, ll_login_date, ll_ip, 
+      ll_req_url)
+    values (#{llId,jdbcType=INTEGER}, #{llLoginDate,jdbcType=TIMESTAMP}, #{llIp,jdbcType=VARCHAR}, 
+      #{llReqUrl,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ylm.pojo.DcSysLoginLog" >
     insert into dc_sys_login_log
@@ -111,25 +110,19 @@
       <if test="llId != null" >
         ll_id,
       </if>
-      <if test="adminId != null" >
-        admin_id,
-      </if>
       <if test="llLoginDate != null" >
         ll_login_date,
       </if>
       <if test="llIp != null" >
         ll_ip,
       </if>
-      <if test="llStatus != null" >
-        ll_status,
+      <if test="llReqUrl != null" >
+        ll_req_url,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="llId != null" >
         #{llId,jdbcType=INTEGER},
-      </if>
-      <if test="adminId != null" >
-        #{adminId,jdbcType=INTEGER},
       </if>
       <if test="llLoginDate != null" >
         #{llLoginDate,jdbcType=TIMESTAMP},
@@ -137,8 +130,8 @@
       <if test="llIp != null" >
         #{llIp,jdbcType=VARCHAR},
       </if>
-      <if test="llStatus != null" >
-        #{llStatus,jdbcType=INTEGER},
+      <if test="llReqUrl != null" >
+        #{llReqUrl,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -154,17 +147,14 @@
       <if test="record.llId != null" >
         ll_id = #{record.llId,jdbcType=INTEGER},
       </if>
-      <if test="record.adminId != null" >
-        admin_id = #{record.adminId,jdbcType=INTEGER},
-      </if>
       <if test="record.llLoginDate != null" >
         ll_login_date = #{record.llLoginDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.llIp != null" >
         ll_ip = #{record.llIp,jdbcType=VARCHAR},
       </if>
-      <if test="record.llStatus != null" >
-        ll_status = #{record.llStatus,jdbcType=INTEGER},
+      <if test="record.llReqUrl != null" >
+        ll_req_url = #{record.llReqUrl,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -174,10 +164,9 @@
   <update id="updateByExample" parameterType="map" >
     update dc_sys_login_log
     set ll_id = #{record.llId,jdbcType=INTEGER},
-      admin_id = #{record.adminId,jdbcType=INTEGER},
       ll_login_date = #{record.llLoginDate,jdbcType=TIMESTAMP},
       ll_ip = #{record.llIp,jdbcType=VARCHAR},
-      ll_status = #{record.llStatus,jdbcType=INTEGER}
+      ll_req_url = #{record.llReqUrl,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -185,27 +174,23 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.ylm.pojo.DcSysLoginLog" >
     update dc_sys_login_log
     <set >
-      <if test="adminId != null" >
-        admin_id = #{adminId,jdbcType=INTEGER},
-      </if>
       <if test="llLoginDate != null" >
         ll_login_date = #{llLoginDate,jdbcType=TIMESTAMP},
       </if>
       <if test="llIp != null" >
         ll_ip = #{llIp,jdbcType=VARCHAR},
       </if>
-      <if test="llStatus != null" >
-        ll_status = #{llStatus,jdbcType=INTEGER},
+      <if test="llReqUrl != null" >
+        ll_req_url = #{llReqUrl,jdbcType=VARCHAR},
       </if>
     </set>
     where ll_id = #{llId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ylm.pojo.DcSysLoginLog" >
     update dc_sys_login_log
-    set admin_id = #{adminId,jdbcType=INTEGER},
-      ll_login_date = #{llLoginDate,jdbcType=TIMESTAMP},
+    set ll_login_date = #{llLoginDate,jdbcType=TIMESTAMP},
       ll_ip = #{llIp,jdbcType=VARCHAR},
-      ll_status = #{llStatus,jdbcType=INTEGER}
+      ll_req_url = #{llReqUrl,jdbcType=VARCHAR}
     where ll_id = #{llId,jdbcType=INTEGER}
   </update>
 </mapper>

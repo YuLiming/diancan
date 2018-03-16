@@ -233,6 +233,66 @@ public class DcFoodtypeExample {
             addCriterion("foodtype_name not between", value1, value2, "foodtypeName");
             return (Criteria) this;
         }
+
+        public Criteria andFoodtypeIsdelIsNull() {
+            addCriterion("foodtype_isDel is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodtypeIsdelIsNotNull() {
+            addCriterion("foodtype_isDel is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodtypeIsdelEqualTo(Integer value) {
+            addCriterion("foodtype_isDel =", value, "foodtypeIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodtypeIsdelNotEqualTo(Integer value) {
+            addCriterion("foodtype_isDel <>", value, "foodtypeIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodtypeIsdelGreaterThan(Integer value) {
+            addCriterion("foodtype_isDel >", value, "foodtypeIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodtypeIsdelGreaterThanOrEqualTo(Integer value) {
+            addCriterion("foodtype_isDel >=", value, "foodtypeIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodtypeIsdelLessThan(Integer value) {
+            addCriterion("foodtype_isDel <", value, "foodtypeIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodtypeIsdelLessThanOrEqualTo(Integer value) {
+            addCriterion("foodtype_isDel <=", value, "foodtypeIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodtypeIsdelIn(List<Integer> values) {
+            addCriterion("foodtype_isDel in", values, "foodtypeIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodtypeIsdelNotIn(List<Integer> values) {
+            addCriterion("foodtype_isDel not in", values, "foodtypeIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodtypeIsdelBetween(Integer value1, Integer value2) {
+            addCriterion("foodtype_isDel between", value1, value2, "foodtypeIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodtypeIsdelNotBetween(Integer value1, Integer value2) {
+            addCriterion("foodtype_isDel not between", value1, value2, "foodtypeIsdel");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -27,4 +27,6 @@ public interface DcUserMapper {
     int updateByPrimaryKeySelective(DcUser record);
 
     int updateByPrimaryKey(DcUser record);
+
+    int deleteByPrimaryKeys(List<Integer> userId);
 }

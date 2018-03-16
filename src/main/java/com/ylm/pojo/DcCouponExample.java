@@ -2,7 +2,6 @@ package com.ylm.pojo;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class DcCouponExample {
@@ -106,32 +105,6 @@ public class DcCouponExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
-        }
-
         public Criteria andCouponIdIsNull() {
             addCriterion("coupon_id is null");
             return (Criteria) this;
@@ -142,62 +115,52 @@ public class DcCouponExample {
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdEqualTo(String value) {
+        public Criteria andCouponIdEqualTo(Integer value) {
             addCriterion("coupon_id =", value, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdNotEqualTo(String value) {
+        public Criteria andCouponIdNotEqualTo(Integer value) {
             addCriterion("coupon_id <>", value, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdGreaterThan(String value) {
+        public Criteria andCouponIdGreaterThan(Integer value) {
             addCriterion("coupon_id >", value, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdGreaterThanOrEqualTo(String value) {
+        public Criteria andCouponIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("coupon_id >=", value, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdLessThan(String value) {
+        public Criteria andCouponIdLessThan(Integer value) {
             addCriterion("coupon_id <", value, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdLessThanOrEqualTo(String value) {
+        public Criteria andCouponIdLessThanOrEqualTo(Integer value) {
             addCriterion("coupon_id <=", value, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdLike(String value) {
-            addCriterion("coupon_id like", value, "couponId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCouponIdNotLike(String value) {
-            addCriterion("coupon_id not like", value, "couponId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCouponIdIn(List<String> values) {
+        public Criteria andCouponIdIn(List<Integer> values) {
             addCriterion("coupon_id in", values, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdNotIn(List<String> values) {
+        public Criteria andCouponIdNotIn(List<Integer> values) {
             addCriterion("coupon_id not in", values, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdBetween(String value1, String value2) {
+        public Criteria andCouponIdBetween(Integer value1, Integer value2) {
             addCriterion("coupon_id between", value1, value2, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdNotBetween(String value1, String value2) {
+        public Criteria andCouponIdNotBetween(Integer value1, Integer value2) {
             addCriterion("coupon_id not between", value1, value2, "couponId");
             return (Criteria) this;
         }
@@ -333,52 +296,182 @@ public class DcCouponExample {
         }
 
         public Criteria andExpiryTimeEqualTo(Date value) {
-            addCriterionForJDBCDate("expiry_time =", value, "expiryTime");
+            addCriterion("expiry_time =", value, "expiryTime");
             return (Criteria) this;
         }
 
         public Criteria andExpiryTimeNotEqualTo(Date value) {
-            addCriterionForJDBCDate("expiry_time <>", value, "expiryTime");
+            addCriterion("expiry_time <>", value, "expiryTime");
             return (Criteria) this;
         }
 
         public Criteria andExpiryTimeGreaterThan(Date value) {
-            addCriterionForJDBCDate("expiry_time >", value, "expiryTime");
+            addCriterion("expiry_time >", value, "expiryTime");
             return (Criteria) this;
         }
 
         public Criteria andExpiryTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("expiry_time >=", value, "expiryTime");
+            addCriterion("expiry_time >=", value, "expiryTime");
             return (Criteria) this;
         }
 
         public Criteria andExpiryTimeLessThan(Date value) {
-            addCriterionForJDBCDate("expiry_time <", value, "expiryTime");
+            addCriterion("expiry_time <", value, "expiryTime");
             return (Criteria) this;
         }
 
         public Criteria andExpiryTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("expiry_time <=", value, "expiryTime");
+            addCriterion("expiry_time <=", value, "expiryTime");
             return (Criteria) this;
         }
 
         public Criteria andExpiryTimeIn(List<Date> values) {
-            addCriterionForJDBCDate("expiry_time in", values, "expiryTime");
+            addCriterion("expiry_time in", values, "expiryTime");
             return (Criteria) this;
         }
 
         public Criteria andExpiryTimeNotIn(List<Date> values) {
-            addCriterionForJDBCDate("expiry_time not in", values, "expiryTime");
+            addCriterion("expiry_time not in", values, "expiryTime");
             return (Criteria) this;
         }
 
         public Criteria andExpiryTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("expiry_time between", value1, value2, "expiryTime");
+            addCriterion("expiry_time between", value1, value2, "expiryTime");
             return (Criteria) this;
         }
 
         public Criteria andExpiryTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("expiry_time not between", value1, value2, "expiryTime");
+            addCriterion("expiry_time not between", value1, value2, "expiryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkIsNull() {
+            addCriterion("remark is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkIsNotNull() {
+            addCriterion("remark is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkEqualTo(String value) {
+            addCriterion("remark =", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkNotEqualTo(String value) {
+            addCriterion("remark <>", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkGreaterThan(String value) {
+            addCriterion("remark >", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkGreaterThanOrEqualTo(String value) {
+            addCriterion("remark >=", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkLessThan(String value) {
+            addCriterion("remark <", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkLessThanOrEqualTo(String value) {
+            addCriterion("remark <=", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkLike(String value) {
+            addCriterion("remark like", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkNotLike(String value) {
+            addCriterion("remark not like", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkIn(List<String> values) {
+            addCriterion("remark in", values, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkNotIn(List<String> values) {
+            addCriterion("remark not in", values, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkBetween(String value1, String value2) {
+            addCriterion("remark between", value1, value2, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkNotBetween(String value1, String value2) {
+            addCriterion("remark not between", value1, value2, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponIsdelIsNull() {
+            addCriterion("coupon_isDel is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponIsdelIsNotNull() {
+            addCriterion("coupon_isDel is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponIsdelEqualTo(Integer value) {
+            addCriterion("coupon_isDel =", value, "couponIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponIsdelNotEqualTo(Integer value) {
+            addCriterion("coupon_isDel <>", value, "couponIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponIsdelGreaterThan(Integer value) {
+            addCriterion("coupon_isDel >", value, "couponIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponIsdelGreaterThanOrEqualTo(Integer value) {
+            addCriterion("coupon_isDel >=", value, "couponIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponIsdelLessThan(Integer value) {
+            addCriterion("coupon_isDel <", value, "couponIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponIsdelLessThanOrEqualTo(Integer value) {
+            addCriterion("coupon_isDel <=", value, "couponIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponIsdelIn(List<Integer> values) {
+            addCriterion("coupon_isDel in", values, "couponIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponIsdelNotIn(List<Integer> values) {
+            addCriterion("coupon_isDel not in", values, "couponIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponIsdelBetween(Integer value1, Integer value2) {
+            addCriterion("coupon_isDel between", value1, value2, "couponIsdel");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponIsdelNotBetween(Integer value1, Integer value2) {
+            addCriterion("coupon_isDel not between", value1, value2, "couponIsdel");
             return (Criteria) this;
         }
     }

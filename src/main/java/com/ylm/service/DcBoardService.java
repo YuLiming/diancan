@@ -15,4 +15,6 @@ public interface DcBoardService {
     int deleteByPrimaryKey(Integer boardId);
 
     int insert(DcBoard record);
+
+    int deleteByPrimaryKeys(List<Integer> data);
 }

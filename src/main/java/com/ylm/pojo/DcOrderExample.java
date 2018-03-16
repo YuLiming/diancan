@@ -1,5 +1,6 @@
 package com.ylm.pojo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -522,52 +523,52 @@ public class DcOrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrderTotalAmountEqualTo(Integer value) {
+        public Criteria andOrderTotalAmountEqualTo(BigDecimal value) {
             addCriterion("order_total_amount =", value, "orderTotalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTotalAmountNotEqualTo(Integer value) {
+        public Criteria andOrderTotalAmountNotEqualTo(BigDecimal value) {
             addCriterion("order_total_amount <>", value, "orderTotalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTotalAmountGreaterThan(Integer value) {
+        public Criteria andOrderTotalAmountGreaterThan(BigDecimal value) {
             addCriterion("order_total_amount >", value, "orderTotalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTotalAmountGreaterThanOrEqualTo(Integer value) {
+        public Criteria andOrderTotalAmountGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("order_total_amount >=", value, "orderTotalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTotalAmountLessThan(Integer value) {
+        public Criteria andOrderTotalAmountLessThan(BigDecimal value) {
             addCriterion("order_total_amount <", value, "orderTotalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTotalAmountLessThanOrEqualTo(Integer value) {
+        public Criteria andOrderTotalAmountLessThanOrEqualTo(BigDecimal value) {
             addCriterion("order_total_amount <=", value, "orderTotalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTotalAmountIn(List<Integer> values) {
+        public Criteria andOrderTotalAmountIn(List<BigDecimal> values) {
             addCriterion("order_total_amount in", values, "orderTotalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTotalAmountNotIn(List<Integer> values) {
+        public Criteria andOrderTotalAmountNotIn(List<BigDecimal> values) {
             addCriterion("order_total_amount not in", values, "orderTotalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTotalAmountBetween(Integer value1, Integer value2) {
+        public Criteria andOrderTotalAmountBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("order_total_amount between", value1, value2, "orderTotalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTotalAmountNotBetween(Integer value1, Integer value2) {
+        public Criteria andOrderTotalAmountNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("order_total_amount not between", value1, value2, "orderTotalAmount");
             return (Criteria) this;
         }
@@ -919,6 +920,66 @@ public class DcOrderExample {
 
         public Criteria andOrderFoodNumNotBetween(String value1, String value2) {
             addCriterion("order_food_num not between", value1, value2, "orderFoodNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderDiscountAmountIsNull() {
+            addCriterion("order_discount_amount is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderDiscountAmountIsNotNull() {
+            addCriterion("order_discount_amount is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderDiscountAmountEqualTo(BigDecimal value) {
+            addCriterion("order_discount_amount =", value, "orderDiscountAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderDiscountAmountNotEqualTo(BigDecimal value) {
+            addCriterion("order_discount_amount <>", value, "orderDiscountAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderDiscountAmountGreaterThan(BigDecimal value) {
+            addCriterion("order_discount_amount >", value, "orderDiscountAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderDiscountAmountGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("order_discount_amount >=", value, "orderDiscountAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderDiscountAmountLessThan(BigDecimal value) {
+            addCriterion("order_discount_amount <", value, "orderDiscountAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderDiscountAmountLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("order_discount_amount <=", value, "orderDiscountAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderDiscountAmountIn(List<BigDecimal> values) {
+            addCriterion("order_discount_amount in", values, "orderDiscountAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderDiscountAmountNotIn(List<BigDecimal> values) {
+            addCriterion("order_discount_amount not in", values, "orderDiscountAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderDiscountAmountBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("order_discount_amount between", value1, value2, "orderDiscountAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderDiscountAmountNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("order_discount_amount not between", value1, value2, "orderDiscountAmount");
             return (Criteria) this;
         }
     }

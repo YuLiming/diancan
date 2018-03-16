@@ -12,4 +12,10 @@ public interface DcUserService {
     List<DcUser> selectByExample(DcUserExample example);
 
     int updateByPrimaryKey(DcUser record);
+
+    int deleteByPrimaryKey(String userId);
+
+    int insert(DcUser record);
+
+    int deleteByPrimaryKeys(List<Integer> userId);
 }

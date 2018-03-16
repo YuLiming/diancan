@@ -19,6 +19,8 @@ public class DcFood {
 
     private BigDecimal foodVipPrice;
 
+    private Integer foodIsdel;
+
     public Integer getFoodId() {
         return foodId;
     }
@@ -81,5 +83,13 @@ public class DcFood {
 
     public void setFoodVipPrice(BigDecimal foodVipPrice) {
         this.foodVipPrice = foodVipPrice;
+    }
+
+    public Integer getFoodIsdel() {
+        return foodIsdel;
+    }
+
+    public void setFoodIsdel(Integer foodIsdel) {
+        this.foodIsdel = foodIsdel;
     }
 }

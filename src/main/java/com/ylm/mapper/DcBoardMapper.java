@@ -27,4 +27,6 @@ public interface DcBoardMapper {
     int updateByPrimaryKeySelective(DcBoard record);
 
     int updateByPrimaryKey(DcBoard record);
+
+    int deleteByPrimaryKeys(List<Integer> data);
 }

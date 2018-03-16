@@ -1,12 +1,19 @@
 package com.ylm.controller;
 
+import com.ylm.common.BaseResult;
 import com.ylm.pojo.DcUser;
 import com.ylm.service.DcUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class DcUserController {
@@ -14,27 +21,58 @@ public class DcUserController {
     private DcUserService dcUserService;
 
     @RequestMapping("/getUsers")
-    public String getUsers(Model model){
-        model.addAttribute("users",dcUserService.selectByExample(null));
-        return "getUser";
+    @ResponseBody
+    public List<DcUser> getUsers(){
+        List<DcUser> result = new ArrayList<DcUser>();
+        List<DcUser> users = dcUserService.selectByExample(null);
+        for (DcUser user : users){
+            if (user.getUserIsDel()==0){
+                result.add(user);
+            }
+        }
+        return result;
     }
 
     @RequestMapping("/selectUser")
-    public String selectUser(Model model, @RequestParam(value = "id",required = false,defaultValue = "1")String id ){
-        model.addAttribute("user",dcUserService.selectByPrimaryKey(id));
-        return "selectUser";
+    @ResponseBody
+    public Object selectUser(@RequestParam(value = "id",required = false,defaultValue = "1")String id ){
+        return dcUserService.selectByPrimaryKey(id);
     }
 
     @RequestMapping("/editUserSubmit")
-    public String editUserSubmit(DcUser user){
-        user.setAccumulatePoints(2);
-        user.setBalance(3);
-        user.setMemberLevel("adf");
-        user.setUserIsDel(1);
-        user.setUserPassword("123123");
-        dcUserService.updateByPrimaryKey(user);
-        System.out.println("edit:"+user.getUserName());
-        return "redirect:getUsers";
+    @ResponseBody
+    public Object editUserSubmit(DcUser user){
+        user.setUserIsDel(0);
+        return dcUserService.updateByPrimaryKey(user)>0?
+                new BaseResult(true,"修改会员信息成功"):
+                new BaseResult(false,"修改会员信息失败");
+    }
+
+    @RequestMapping("/deleteUser")
+    @ResponseBody
+    public Object deleteUser(@RequestParam(value = "id",required = false,defaultValue = "1") String id){
+        return dcUserService.deleteByPrimaryKey(id)>0?
+                new BaseResult(true,""):
+                new BaseResult(false,"");
+    }
+
+    @RequestMapping("/newUserSubmit")
+    @ResponseBody
+    public Object newUserSubmit(DcUser user){
+        String uuid = UUID.randomUUID().toString().replace("-", "");
+        user.setUserId(uuid);
+        user.setUserIsDel(0);
+        return dcUserService.insert(user)>0?
+                new BaseResult(true,"新增用户成功"):
+                new BaseResult(false,"新增用户失败");
+    }
+
+    @RequestMapping("/deleteUsers")
+    @ResponseBody
+    public Object deleteUsers(@RequestParam("id[]") List<Integer> id){
+        return dcUserService.deleteByPrimaryKeys(id)>0?
+                new BaseResult(true,"批量删除用户成功"):
+                new BaseResult(false,"批量删除用户失败");
     }
 
 //    @RequestMapping(value = "/editItems",method = RequestMethod.GET)

@@ -1,9 +1,10 @@
 package com.ylm.pojo;
 
+import javax.xml.crypto.Data;
 import java.util.Date;
 
 public class DcCoupon {
-    private String couponId;
+    private Integer couponId;
 
     private Integer consumptionAmount;
 
@@ -11,12 +12,18 @@ public class DcCoupon {
 
     private Date expiryTime;
 
-    public String getCouponId() {
+    private String remark;
+
+    private Integer couponIsdel;
+
+    private Data startTime;
+
+    public Integer getCouponId() {
         return couponId;
     }
 
-    public void setCouponId(String couponId) {
-        this.couponId = couponId == null ? null : couponId.trim();
+    public void setCouponId(Integer couponId) {
+        this.couponId = couponId;
     }
 
     public Integer getConsumptionAmount() {
@@ -41,5 +48,29 @@ public class DcCoupon {
 
     public void setExpiryTime(Date expiryTime) {
         this.expiryTime = expiryTime;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public Data getStartTime(){
+        return startTime;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
+    }
+
+    public Integer getCouponIsdel() {
+        return couponIsdel;
+    }
+
+    public void setCouponIsdel(Integer couponIsdel) {
+        this.couponIsdel = couponIsdel;
+    }
+
+    public void setStartTime(Data data){
+        this.startTime = data;
     }
 }

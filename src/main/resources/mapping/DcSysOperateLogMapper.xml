@@ -6,7 +6,7 @@
     <result column="ol_type" property="olType" jdbcType="VARCHAR" />
     <result column="ol_module" property="olModule" jdbcType="VARCHAR" />
     <result column="ol_content" property="olContent" jdbcType="VARCHAR" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="admin_id" property="adminId" jdbcType="INTEGER" />
     <result column="ol_add_date" property="olAddDate" jdbcType="TIMESTAMP" />
     <result column="ol_ip" property="olIp" jdbcType="VARCHAR" />
     <result column="ol_remarks" property="olRemarks" jdbcType="VARCHAR" />
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ol_id, ol_type, ol_module, ol_content, user_id, ol_add_date, ol_ip, ol_remarks
+    ol_id, ol_type, ol_module, ol_content, admin_id, ol_add_date, ol_ip, ol_remarks
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ylm.pojo.DcSysOperateLogExample" >
     select
@@ -104,10 +104,10 @@
   </delete>
   <insert id="insert" parameterType="com.ylm.pojo.DcSysOperateLog" >
     insert into dc_sys_operate_log (ol_id, ol_type, ol_module, 
-      ol_content, user_id, ol_add_date, 
+      ol_content, admin_id, ol_add_date, 
       ol_ip, ol_remarks)
     values (#{olId,jdbcType=INTEGER}, #{olType,jdbcType=VARCHAR}, #{olModule,jdbcType=VARCHAR}, 
-      #{olContent,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{olAddDate,jdbcType=TIMESTAMP}, 
+      #{olContent,jdbcType=VARCHAR}, #{adminId,jdbcType=INTEGER}, #{olAddDate,jdbcType=TIMESTAMP}, 
       #{olIp,jdbcType=VARCHAR}, #{olRemarks,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ylm.pojo.DcSysOperateLog" >
@@ -125,8 +125,8 @@
       <if test="olContent != null" >
         ol_content,
       </if>
-      <if test="userId != null" >
-        user_id,
+      <if test="adminId != null" >
+        admin_id,
       </if>
       <if test="olAddDate != null" >
         ol_add_date,
@@ -151,8 +151,8 @@
       <if test="olContent != null" >
         #{olContent,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+      <if test="adminId != null" >
+        #{adminId,jdbcType=INTEGER},
       </if>
       <if test="olAddDate != null" >
         #{olAddDate,jdbcType=TIMESTAMP},
@@ -186,8 +186,8 @@
       <if test="record.olContent != null" >
         ol_content = #{record.olContent,jdbcType=VARCHAR},
       </if>
-      <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=INTEGER},
+      <if test="record.adminId != null" >
+        admin_id = #{record.adminId,jdbcType=INTEGER},
       </if>
       <if test="record.olAddDate != null" >
         ol_add_date = #{record.olAddDate,jdbcType=TIMESTAMP},
@@ -209,7 +209,7 @@
       ol_type = #{record.olType,jdbcType=VARCHAR},
       ol_module = #{record.olModule,jdbcType=VARCHAR},
       ol_content = #{record.olContent,jdbcType=VARCHAR},
-      user_id = #{record.userId,jdbcType=INTEGER},
+      admin_id = #{record.adminId,jdbcType=INTEGER},
       ol_add_date = #{record.olAddDate,jdbcType=TIMESTAMP},
       ol_ip = #{record.olIp,jdbcType=VARCHAR},
       ol_remarks = #{record.olRemarks,jdbcType=VARCHAR}
@@ -229,8 +229,8 @@
       <if test="olContent != null" >
         ol_content = #{olContent,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+      <if test="adminId != null" >
+        admin_id = #{adminId,jdbcType=INTEGER},
       </if>
       <if test="olAddDate != null" >
         ol_add_date = #{olAddDate,jdbcType=TIMESTAMP},
@@ -249,7 +249,7 @@
     set ol_type = #{olType,jdbcType=VARCHAR},
       ol_module = #{olModule,jdbcType=VARCHAR},
       ol_content = #{olContent,jdbcType=VARCHAR},
-      user_id = #{userId,jdbcType=INTEGER},
+      admin_id = #{adminId,jdbcType=INTEGER},
       ol_add_date = #{olAddDate,jdbcType=TIMESTAMP},
       ol_ip = #{olIp,jdbcType=VARCHAR},
       ol_remarks = #{olRemarks,jdbcType=VARCHAR}

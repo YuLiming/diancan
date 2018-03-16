@@ -633,6 +633,76 @@ public class DcUserExample {
             addCriterion("user_password not between", value1, value2, "userPassword");
             return (Criteria) this;
         }
+
+        public Criteria andUserCouponIsNull() {
+            addCriterion("user_coupon is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserCouponIsNotNull() {
+            addCriterion("user_coupon is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserCouponEqualTo(String value) {
+            addCriterion("user_coupon =", value, "userCoupon");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserCouponNotEqualTo(String value) {
+            addCriterion("user_coupon <>", value, "userCoupon");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserCouponGreaterThan(String value) {
+            addCriterion("user_coupon >", value, "userCoupon");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserCouponGreaterThanOrEqualTo(String value) {
+            addCriterion("user_coupon >=", value, "userCoupon");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserCouponLessThan(String value) {
+            addCriterion("user_coupon <", value, "userCoupon");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserCouponLessThanOrEqualTo(String value) {
+            addCriterion("user_coupon <=", value, "userCoupon");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserCouponLike(String value) {
+            addCriterion("user_coupon like", value, "userCoupon");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserCouponNotLike(String value) {
+            addCriterion("user_coupon not like", value, "userCoupon");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserCouponIn(List<String> values) {
+            addCriterion("user_coupon in", values, "userCoupon");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserCouponNotIn(List<String> values) {
+            addCriterion("user_coupon not in", values, "userCoupon");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserCouponBetween(String value1, String value2) {
+            addCriterion("user_coupon between", value1, value2, "userCoupon");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserCouponNotBetween(String value1, String value2) {
+            addCriterion("user_coupon not between", value1, value2, "userCoupon");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

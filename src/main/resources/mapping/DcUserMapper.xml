@@ -10,6 +10,7 @@
     <result column="member_level" property="memberLevel" jdbcType="VARCHAR" />
     <result column="user_is_del" property="userIsDel" jdbcType="INTEGER" />
     <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
+    <result column="user_coupon" property="userCoupon" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +72,7 @@
   </sql>
   <sql id="Base_Column_List" >
     user_id, user_name, user_phone, accumulate_points, balance, member_level, user_is_del, 
-    user_password
+    user_password, user_coupon
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ylm.pojo.DcUserExample" >
     select
@@ -94,7 +95,8 @@
     where user_id = #{userId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from dc_user
+    UPDATE dc_user
+    SET user_is_del = 1
     where user_id = #{userId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.ylm.pojo.DcUserExample" >
@@ -106,10 +108,12 @@
   <insert id="insert" parameterType="com.ylm.pojo.DcUser" >
     insert into dc_user (user_id, user_name, user_phone, 
       accumulate_points, balance, member_level, 
-      user_is_del, user_password)
+      user_is_del, user_password, user_coupon
+      )
     values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, 
       #{accumulatePoints,jdbcType=INTEGER}, #{balance,jdbcType=INTEGER}, #{memberLevel,jdbcType=VARCHAR}, 
-      #{userIsDel,jdbcType=INTEGER}, #{userPassword,jdbcType=VARCHAR})
+      #{userIsDel,jdbcType=INTEGER}, #{userPassword,jdbcType=VARCHAR}, #{userCoupon,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.ylm.pojo.DcUser" >
     insert into dc_user
@@ -138,6 +142,9 @@
       <if test="userPassword != null" >
         user_password,
       </if>
+      <if test="userCoupon != null" >
+        user_coupon,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -163,6 +170,9 @@
       </if>
       <if test="userPassword != null" >
         #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userCoupon != null" >
+        #{userCoupon,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -199,6 +209,9 @@
       <if test="record.userPassword != null" >
         user_password = #{record.userPassword,jdbcType=VARCHAR},
       </if>
+      <if test="record.userCoupon != null" >
+        user_coupon = #{record.userCoupon,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -213,7 +226,8 @@
       balance = #{record.balance,jdbcType=INTEGER},
       member_level = #{record.memberLevel,jdbcType=VARCHAR},
       user_is_del = #{record.userIsDel,jdbcType=INTEGER},
-      user_password = #{record.userPassword,jdbcType=VARCHAR}
+      user_password = #{record.userPassword,jdbcType=VARCHAR},
+      user_coupon = #{record.userCoupon,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -242,6 +256,9 @@
       <if test="userPassword != null" >
         user_password = #{userPassword,jdbcType=VARCHAR},
       </if>
+      <if test="userCoupon != null" >
+        user_coupon = #{userCoupon,jdbcType=VARCHAR},
+      </if>
     </set>
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
@@ -253,7 +270,17 @@
       balance = #{balance,jdbcType=INTEGER},
       member_level = #{memberLevel,jdbcType=VARCHAR},
       user_is_del = #{userIsDel,jdbcType=INTEGER},
-      user_password = #{userPassword,jdbcType=VARCHAR}
+      user_password = #{userPassword,jdbcType=VARCHAR},
+      user_coupon = #{userCoupon,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="deleteByPrimaryKeys" parameterType="java.util.List">
+    UPDATE dc_user
+    SET user_is_del = 1
+    WHERE dc_user.user_id in
+    <foreach collection="list" index="index" item="item"
+             separator="," open="(" close=")">
+      #{item,jdbcType=INTEGER}
+    </foreach>
   </update>
 </mapper>

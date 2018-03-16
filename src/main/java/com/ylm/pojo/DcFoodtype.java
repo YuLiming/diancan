@@ -5,6 +5,8 @@ public class DcFoodtype {
 
     private String foodtypeName;
 
+    private Integer foodtypeIsdel;
+
     public Integer getFoodtypeId() {
         return foodtypeId;
     }
@@ -19,5 +21,13 @@ public class DcFoodtype {
 
     public void setFoodtypeName(String foodtypeName) {
         this.foodtypeName = foodtypeName == null ? null : foodtypeName.trim();
+    }
+
+    public Integer getFoodtypeIsdel() {
+        return foodtypeIsdel;
+    }
+
+    public void setFoodtypeIsdel(Integer foodtypeIsdel) {
+        this.foodtypeIsdel = foodtypeIsdel;
     }
 }

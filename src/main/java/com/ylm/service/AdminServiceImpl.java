@@ -2,7 +2,10 @@ package com.ylm.service;
 
 import com.ylm.mapper.DcAdministratorsMapper;
 import com.ylm.pojo.DcAdministrators;
+import com.ylm.pojo.DcAdministratorsExample;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 public class AdminServiceImpl implements AdminService {
 
@@ -21,5 +24,35 @@ public class AdminServiceImpl implements AdminService {
         }else {
             return LOGIN_SUCCESS;
         }
+    }
+
+    @Override
+    public int insert(DcAdministrators record) {
+        return administratorsMapper.insert(record);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Integer adminId) {
+        return administratorsMapper.deleteByPrimaryKey(adminId);
+    }
+
+    @Override
+    public int updateByPrimaryKey(DcAdministrators record) {
+        return administratorsMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public DcAdministrators selectByPrimaryKey(Integer adminId) {
+        return administratorsMapper.selectByPrimaryKey(adminId);
+    }
+
+    @Override
+    public List<DcAdministrators> selectByExample(DcAdministratorsExample example) {
+        return administratorsMapper.selectByExample(example);
+    }
+
+    @Override
+    public int deleteByPrimaryKeys(List<Integer> data) {
+        return administratorsMapper.deleteByPrimaryKeys(data);
     }
 }

@@ -5,13 +5,11 @@ import java.util.Date;
 public class DcSysLoginLog {
     private Integer llId;
 
-    private Integer adminId;
-
     private Date llLoginDate;
 
     private String llIp;
 
-    private Integer llStatus;
+    private String llReqUrl;
 
     public Integer getLlId() {
         return llId;
@@ -19,14 +17,6 @@ public class DcSysLoginLog {
 
     public void setLlId(Integer llId) {
         this.llId = llId;
-    }
-
-    public Integer getAdminId() {
-        return adminId;
-    }
-
-    public void setAdminId(Integer adminId) {
-        this.adminId = adminId;
     }
 
     public Date getLlLoginDate() {
@@ -45,11 +35,11 @@ public class DcSysLoginLog {
         this.llIp = llIp == null ? null : llIp.trim();
     }
 
-    public Integer getLlStatus() {
-        return llStatus;
+    public String getLlReqUrl() {
+        return llReqUrl;
     }
 
-    public void setLlStatus(Integer llStatus) {
-        this.llStatus = llStatus;
+    public void setLlReqUrl(String llReqUrl) {
+        this.llReqUrl = llReqUrl == null ? null : llReqUrl.trim();
     }
 }

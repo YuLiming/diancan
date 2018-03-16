@@ -17,4 +17,6 @@ public interface DcFoodTypeService {
 
     int deleteByPrimaryKey(Integer foodtypeId);
 
+    int deleteByPrimaryKeys(List<Integer> data);
+
 }

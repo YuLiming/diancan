@@ -17,6 +17,8 @@ public class DcUser {
 
     private String userPassword;
 
+    private String userCoupon;
+
     public String getUserId() {
         return userId;
     }
@@ -79,5 +81,13 @@ public class DcUser {
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword == null ? null : userPassword.trim();
+    }
+
+    public String getUserCoupon() {
+        return userCoupon;
+    }
+
+    public void setUserCoupon(String userCoupon) {
+        this.userCoupon = userCoupon == null ? null : userCoupon.trim();
     }
 }

@@ -36,4 +36,9 @@ public class DcFoodServiceImpl implements DcFoodService {
     public int insert(DcFood record) {
         return dcFoodMapper.insert(record);
     }
+
+    @Override
+    public int deleteByPrimaryKeys(List<Integer> data) {
+        return dcFoodMapper.deleteByPrimaryKeys(data);
+    }
 }

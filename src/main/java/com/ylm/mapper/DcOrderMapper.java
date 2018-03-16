@@ -12,6 +12,8 @@ public interface DcOrderMapper {
 
     int deleteByPrimaryKey(String orderId);
 
+    int deleteByPrimaryKeys(List<Integer> data);
+
     int insert(DcOrder record);
 
     int insertSelective(DcOrder record);
