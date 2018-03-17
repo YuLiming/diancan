@@ -19,4 +19,6 @@ public interface DcOrderService {
 
     int deleteByPrimaryKeys(List<Integer> data);
 
+    List<DcOrder> selectOrderNum(String startTime,String endTime);
+
 }

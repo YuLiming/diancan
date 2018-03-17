@@ -5,6 +5,8 @@ import com.ylm.pojo.DcOrderExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+import javax.xml.crypto.Data;
+
 public interface DcOrderMapper {
     int countByExample(DcOrderExample example);
 
@@ -29,4 +31,6 @@ public interface DcOrderMapper {
     int updateByPrimaryKeySelective(DcOrder record);
 
     int updateByPrimaryKey(DcOrder record);
+
+    List<DcOrder> selectOrderNum(@Param("startTime") String startTime,@Param("endTime") String endTime);
 }

@@ -10,9 +10,9 @@ public class DcOrder {
 
     private Integer orderPeopleNumber;
 
-    private Date orderDate;
+    private String orderDate;
 
-    private Date orderBoardDate;
+    private String orderBoardDate;
 
     private String orderBoardTimeInterval;
 
@@ -54,19 +54,19 @@ public class DcOrder {
         this.orderPeopleNumber = orderPeopleNumber;
     }
 
-    public Date getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
     }
 
-    public Date getOrderBoardDate() {
+    public String getOrderBoardDate() {
         return orderBoardDate;
     }
 
-    public void setOrderBoardDate(Date orderBoardDate) {
+    public void setOrderBoardDate(String orderBoardDate) {
         this.orderBoardDate = orderBoardDate;
     }
 

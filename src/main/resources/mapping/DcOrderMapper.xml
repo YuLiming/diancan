@@ -99,6 +99,13 @@
     from dc_order
     where order_id = #{orderId,jdbcType=VARCHAR}
   </select>
+  <select id="selectOrderNum" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM dc_order
+    WHERE order_board_date
+    BETWEEN #{startTime,jdbcType=VARCHAR} AND #{endTime,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from dc_order
     where order_id = #{orderId,jdbcType=VARCHAR}

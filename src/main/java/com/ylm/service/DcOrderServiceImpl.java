@@ -41,4 +41,9 @@ public class DcOrderServiceImpl implements DcOrderService {
     public int deleteByPrimaryKeys(List<Integer> data) {
         return dcOrderMapper.deleteByPrimaryKeys(data);
     }
+
+    @Override
+    public List<DcOrder> selectOrderNum(String startTime, String endTime) {
+        return dcOrderMapper.selectOrderNum(startTime, endTime);
+    }
 }

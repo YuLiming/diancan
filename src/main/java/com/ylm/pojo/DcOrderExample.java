@@ -2,7 +2,6 @@ package com.ylm.pojo;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -107,30 +106,30 @@ public class DcOrderExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+        protected void addCriterionForJDBCDate(String condition, String value, String property) {
             if (value == null) {
                 throw new RuntimeException("Value for " + property + " cannot be null");
             }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+            addCriterion(condition, value, property);
         }
 
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+        protected void addCriterionForJDBCDate(String condition, List<String> values, String property) {
             if (values == null || values.size() == 0) {
                 throw new RuntimeException("Value list for " + property + " cannot be null or empty");
             }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
+            List<String> dateList = new ArrayList<String>();
+            Iterator<String> iter = values.iterator();
             while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
+                dateList.add(iter.next());
             }
             addCriterion(condition, dateList, property);
         }
 
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+        protected void addCriterionForJDBCDate(String condition, String value1, String value2, String property) {
             if (value1 == null || value2 == null) {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
+            addCriterion(condition, value1, value2, property);
         }
 
         public Criteria andOrderIdIsNull() {
@@ -333,52 +332,52 @@ public class DcOrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateEqualTo(Date value) {
+        public Criteria andOrderDateEqualTo(String value) {
             addCriterion("order_date =", value, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateNotEqualTo(Date value) {
+        public Criteria andOrderDateNotEqualTo(String value) {
             addCriterion("order_date <>", value, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateGreaterThan(Date value) {
+        public Criteria andOrderDateGreaterThan(String value) {
             addCriterion("order_date >", value, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateGreaterThanOrEqualTo(Date value) {
+        public Criteria andOrderDateGreaterThanOrEqualTo(String value) {
             addCriterion("order_date >=", value, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateLessThan(Date value) {
+        public Criteria andOrderDateLessThan(String value) {
             addCriterion("order_date <", value, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateLessThanOrEqualTo(Date value) {
+        public Criteria andOrderDateLessThanOrEqualTo(String value) {
             addCriterion("order_date <=", value, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateIn(List<Date> values) {
+        public Criteria andOrderDateIn(List<String> values) {
             addCriterion("order_date in", values, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateNotIn(List<Date> values) {
+        public Criteria andOrderDateNotIn(List<String> values) {
             addCriterion("order_date not in", values, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateBetween(Date value1, Date value2) {
+        public Criteria andOrderDateBetween(String value1, String value2) {
             addCriterion("order_date between", value1, value2, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateNotBetween(Date value1, Date value2) {
+        public Criteria andOrderDateNotBetween(String value1, String value2) {
             addCriterion("order_date not between", value1, value2, "orderDate");
             return (Criteria) this;
         }
@@ -393,52 +392,52 @@ public class DcOrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrderBoardDateEqualTo(Date value) {
+        public Criteria andOrderBoardDateEqualTo(String value) {
             addCriterionForJDBCDate("order_board_date =", value, "orderBoardDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderBoardDateNotEqualTo(Date value) {
+        public Criteria andOrderBoardDateNotEqualTo(String value) {
             addCriterionForJDBCDate("order_board_date <>", value, "orderBoardDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderBoardDateGreaterThan(Date value) {
+        public Criteria andOrderBoardDateGreaterThan(String value) {
             addCriterionForJDBCDate("order_board_date >", value, "orderBoardDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderBoardDateGreaterThanOrEqualTo(Date value) {
+        public Criteria andOrderBoardDateGreaterThanOrEqualTo(String value) {
             addCriterionForJDBCDate("order_board_date >=", value, "orderBoardDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderBoardDateLessThan(Date value) {
+        public Criteria andOrderBoardDateLessThan(String value) {
             addCriterionForJDBCDate("order_board_date <", value, "orderBoardDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderBoardDateLessThanOrEqualTo(Date value) {
+        public Criteria andOrderBoardDateLessThanOrEqualTo(String value) {
             addCriterionForJDBCDate("order_board_date <=", value, "orderBoardDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderBoardDateIn(List<Date> values) {
+        public Criteria andOrderBoardDateIn(List<String> values) {
             addCriterionForJDBCDate("order_board_date in", values, "orderBoardDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderBoardDateNotIn(List<Date> values) {
+        public Criteria andOrderBoardDateNotIn(List<String> values) {
             addCriterionForJDBCDate("order_board_date not in", values, "orderBoardDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderBoardDateBetween(Date value1, Date value2) {
+        public Criteria andOrderBoardDateBetween(String value1, String value2) {
             addCriterionForJDBCDate("order_board_date between", value1, value2, "orderBoardDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderBoardDateNotBetween(Date value1, Date value2) {
+        public Criteria andOrderBoardDateNotBetween(String value1, String value2) {
             addCriterionForJDBCDate("order_board_date not between", value1, value2, "orderBoardDate");
             return (Criteria) this;
         }
