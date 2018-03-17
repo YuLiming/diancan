@@ -1,39 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ylm.mapper.DcUserMapper">
-  <resultMap id="BaseResultMap" type="com.ylm.pojo.DcUser">
-    <id column="user_id" jdbcType="VARCHAR" property="userId" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
-    <result column="accumulate_points" jdbcType="INTEGER" property="accumulatePoints" />
-    <result column="balance" jdbcType="DECIMAL" property="balance" />
-    <result column="member_level" jdbcType="VARCHAR" property="memberLevel" />
-    <result column="user_is_del" jdbcType="INTEGER" property="userIsDel" />
-    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
-    <result column="user_coupon" jdbcType="VARCHAR" property="userCoupon" />
-    <result column="user_card_no" jdbcType="VARCHAR" property="userCardNo" />
-    <result column="user_gender" jdbcType="VARCHAR" property="userGender" />
-    <result column="user_birth" jdbcType="DATE" property="userBirth" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ylm.mapper.DcUserMapper" >
+  <resultMap id="BaseResultMap" type="com.ylm.pojo.DcUser" >
+    <id column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="accumulate_points" property="accumulatePoints" jdbcType="INTEGER" />
+    <result column="balance" property="balance" jdbcType="DECIMAL" />
+    <result column="member_level" property="memberLevel" jdbcType="VARCHAR" />
+    <result column="user_is_del" property="userIsDel" jdbcType="INTEGER" />
+    <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
+    <result column="user_coupon" property="userCoupon" jdbcType="VARCHAR" />
+    <result column="user_card_no" property="userCardNo" jdbcType="VARCHAR" />
+    <result column="user_gender" property="userGender" jdbcType="VARCHAR" />
+    <result column="user_birth" property="userBirth" jdbcType="DATE" />
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -44,25 +44,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -73,41 +73,42 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     user_id, user_name, user_phone, accumulate_points, balance, member_level, user_is_del, 
     user_password, user_coupon, user_card_no, user_gender, user_birth
   </sql>
-  <select id="selectByExample" parameterType="com.ylm.pojo.DcUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ylm.pojo.DcUserExample" >
     select
-    <if test="distinct">
+    <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
     from dc_user
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null">
+    <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from dc_user
     where user_id = #{userId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from dc_user
+  <update id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    UPDATE dc_user
+    SET user_is_del = 1
     where user_id = #{userId,jdbcType=VARCHAR}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.ylm.pojo.DcUserExample">
+  </update>
+  <delete id="deleteByExample" parameterType="com.ylm.pojo.DcUserExample" >
     delete from dc_user
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.ylm.pojo.DcUser">
+  <insert id="insert" parameterType="com.ylm.pojo.DcUser" >
     insert into dc_user (user_id, user_name, user_phone, 
       accumulate_points, balance, member_level, 
       user_is_del, user_password, user_coupon, 
@@ -119,136 +120,136 @@
       #{userCardNo,jdbcType=VARCHAR}, #{userGender,jdbcType=VARCHAR}, #{userBirth,jdbcType=DATE}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.ylm.pojo.DcUser">
+  <insert id="insertSelective" parameterType="com.ylm.pojo.DcUser" >
     insert into dc_user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
         user_id,
       </if>
-      <if test="userName != null">
+      <if test="userName != null" >
         user_name,
       </if>
-      <if test="userPhone != null">
+      <if test="userPhone != null" >
         user_phone,
       </if>
-      <if test="accumulatePoints != null">
+      <if test="accumulatePoints != null" >
         accumulate_points,
       </if>
-      <if test="balance != null">
+      <if test="balance != null" >
         balance,
       </if>
-      <if test="memberLevel != null">
+      <if test="memberLevel != null" >
         member_level,
       </if>
-      <if test="userIsDel != null">
+      <if test="userIsDel != null" >
         user_is_del,
       </if>
-      <if test="userPassword != null">
+      <if test="userPassword != null" >
         user_password,
       </if>
-      <if test="userCoupon != null">
+      <if test="userCoupon != null" >
         user_coupon,
       </if>
-      <if test="userCardNo != null">
+      <if test="userCardNo != null" >
         user_card_no,
       </if>
-      <if test="userGender != null">
+      <if test="userGender != null" >
         user_gender,
       </if>
-      <if test="userBirth != null">
+      <if test="userBirth != null" >
         user_birth,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
         #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="userName != null">
+      <if test="userName != null" >
         #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="userPhone != null">
+      <if test="userPhone != null" >
         #{userPhone,jdbcType=VARCHAR},
       </if>
-      <if test="accumulatePoints != null">
+      <if test="accumulatePoints != null" >
         #{accumulatePoints,jdbcType=INTEGER},
       </if>
-      <if test="balance != null">
+      <if test="balance != null" >
         #{balance,jdbcType=DECIMAL},
       </if>
-      <if test="memberLevel != null">
+      <if test="memberLevel != null" >
         #{memberLevel,jdbcType=VARCHAR},
       </if>
-      <if test="userIsDel != null">
+      <if test="userIsDel != null" >
         #{userIsDel,jdbcType=INTEGER},
       </if>
-      <if test="userPassword != null">
+      <if test="userPassword != null" >
         #{userPassword,jdbcType=VARCHAR},
       </if>
-      <if test="userCoupon != null">
+      <if test="userCoupon != null" >
         #{userCoupon,jdbcType=VARCHAR},
       </if>
-      <if test="userCardNo != null">
+      <if test="userCardNo != null" >
         #{userCardNo,jdbcType=VARCHAR},
       </if>
-      <if test="userGender != null">
+      <if test="userGender != null" >
         #{userGender,jdbcType=VARCHAR},
       </if>
-      <if test="userBirth != null">
+      <if test="userBirth != null" >
         #{userBirth,jdbcType=DATE},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.ylm.pojo.DcUserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.ylm.pojo.DcUserExample" resultType="java.lang.Integer" >
     select count(*) from dc_user
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+  <update id="updateByExampleSelective" parameterType="map" >
     update dc_user
-    <set>
-      <if test="record.userId != null">
+    <set >
+      <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
-      <if test="record.userName != null">
+      <if test="record.userName != null" >
         user_name = #{record.userName,jdbcType=VARCHAR},
       </if>
-      <if test="record.userPhone != null">
+      <if test="record.userPhone != null" >
         user_phone = #{record.userPhone,jdbcType=VARCHAR},
       </if>
-      <if test="record.accumulatePoints != null">
+      <if test="record.accumulatePoints != null" >
         accumulate_points = #{record.accumulatePoints,jdbcType=INTEGER},
       </if>
-      <if test="record.balance != null">
+      <if test="record.balance != null" >
         balance = #{record.balance,jdbcType=DECIMAL},
       </if>
-      <if test="record.memberLevel != null">
+      <if test="record.memberLevel != null" >
         member_level = #{record.memberLevel,jdbcType=VARCHAR},
       </if>
-      <if test="record.userIsDel != null">
+      <if test="record.userIsDel != null" >
         user_is_del = #{record.userIsDel,jdbcType=INTEGER},
       </if>
-      <if test="record.userPassword != null">
+      <if test="record.userPassword != null" >
         user_password = #{record.userPassword,jdbcType=VARCHAR},
       </if>
-      <if test="record.userCoupon != null">
+      <if test="record.userCoupon != null" >
         user_coupon = #{record.userCoupon,jdbcType=VARCHAR},
       </if>
-      <if test="record.userCardNo != null">
+      <if test="record.userCardNo != null" >
         user_card_no = #{record.userCardNo,jdbcType=VARCHAR},
       </if>
-      <if test="record.userGender != null">
+      <if test="record.userGender != null" >
         user_gender = #{record.userGender,jdbcType=VARCHAR},
       </if>
-      <if test="record.userBirth != null">
+      <if test="record.userBirth != null" >
         user_birth = #{record.userBirth,jdbcType=DATE},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map">
+  <update id="updateByExample" parameterType="map" >
     update dc_user
     set user_id = #{record.userId,jdbcType=VARCHAR},
       user_name = #{record.userName,jdbcType=VARCHAR},
@@ -262,50 +263,50 @@
       user_card_no = #{record.userCardNo,jdbcType=VARCHAR},
       user_gender = #{record.userGender,jdbcType=VARCHAR},
       user_birth = #{record.userBirth,jdbcType=DATE}
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ylm.pojo.DcUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.ylm.pojo.DcUser" >
     update dc_user
-    <set>
-      <if test="userName != null">
+    <set >
+      <if test="userName != null" >
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="userPhone != null">
+      <if test="userPhone != null" >
         user_phone = #{userPhone,jdbcType=VARCHAR},
       </if>
-      <if test="accumulatePoints != null">
+      <if test="accumulatePoints != null" >
         accumulate_points = #{accumulatePoints,jdbcType=INTEGER},
       </if>
-      <if test="balance != null">
+      <if test="balance != null" >
         balance = #{balance,jdbcType=DECIMAL},
       </if>
-      <if test="memberLevel != null">
+      <if test="memberLevel != null" >
         member_level = #{memberLevel,jdbcType=VARCHAR},
       </if>
-      <if test="userIsDel != null">
+      <if test="userIsDel != null" >
         user_is_del = #{userIsDel,jdbcType=INTEGER},
       </if>
-      <if test="userPassword != null">
+      <if test="userPassword != null" >
         user_password = #{userPassword,jdbcType=VARCHAR},
       </if>
-      <if test="userCoupon != null">
+      <if test="userCoupon != null" >
         user_coupon = #{userCoupon,jdbcType=VARCHAR},
       </if>
-      <if test="userCardNo != null">
+      <if test="userCardNo != null" >
         user_card_no = #{userCardNo,jdbcType=VARCHAR},
       </if>
-      <if test="userGender != null">
+      <if test="userGender != null" >
         user_gender = #{userGender,jdbcType=VARCHAR},
       </if>
-      <if test="userBirth != null">
+      <if test="userBirth != null" >
         user_birth = #{userBirth,jdbcType=DATE},
       </if>
     </set>
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ylm.pojo.DcUser">
+  <update id="updateByPrimaryKey" parameterType="com.ylm.pojo.DcUser" >
     update dc_user
     set user_name = #{userName,jdbcType=VARCHAR},
       user_phone = #{userPhone,jdbcType=VARCHAR},
@@ -320,325 +321,14 @@
       user_birth = #{userBirth,jdbcType=DATE}
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.ylm.pojo.DcUser">
-    <id column="user_id" jdbcType="VARCHAR" property="userId" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
-    <result column="accumulate_points" jdbcType="INTEGER" property="accumulatePoints" />
-    <result column="balance" jdbcType="DECIMAL" property="balance" />
-    <result column="member_level" jdbcType="VARCHAR" property="memberLevel" />
-    <result column="user_is_del" jdbcType="INTEGER" property="userIsDel" />
-    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
-    <result column="user_coupon" jdbcType="VARCHAR" property="userCoupon" />
-    <result column="user_card_no" jdbcType="VARCHAR" property="userCardNo" />
-    <result column="user_gender" jdbcType="VARCHAR" property="userGender" />
-    <result column="user_birth" jdbcType="DATE" property="userBirth" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    user_id, user_name, user_phone, accumulate_points, balance, member_level, user_is_del, 
-    user_password, user_coupon, user_card_no, user_gender, user_birth
-  </sql>
-  <select id="selectByExample" parameterType="com.ylm.pojo.DcUserExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from dc_user
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from dc_user
-    where user_id = #{userId,jdbcType=VARCHAR}
-  </select>
-  <update id="deleteByPrimaryKey" parameterType="java.lang.String">
-    UPDATE dc_user
-    SET user_is_del = 1
-    where user_id = #{userId,jdbcType=VARCHAR}
-  </update>
-  <delete id="deleteByExample" parameterType="com.ylm.pojo.DcUserExample">
-    delete from dc_user
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.ylm.pojo.DcUser">
-    insert into dc_user (user_id, user_name, user_phone, 
-      accumulate_points, balance, member_level, 
-      user_is_del, user_password, user_coupon, 
-      user_card_no, user_gender, user_birth
-      )
-    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, 
-      #{accumulatePoints,jdbcType=INTEGER}, #{balance,jdbcType=DECIMAL}, #{memberLevel,jdbcType=VARCHAR}, 
-      #{userIsDel,jdbcType=INTEGER}, #{userPassword,jdbcType=VARCHAR}, #{userCoupon,jdbcType=VARCHAR}, 
-      #{userCardNo,jdbcType=VARCHAR}, #{userGender,jdbcType=VARCHAR}, #{userBirth,jdbcType=DATE}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.ylm.pojo.DcUser">
-    insert into dc_user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="userName != null">
-        user_name,
-      </if>
-      <if test="userPhone != null">
-        user_phone,
-      </if>
-      <if test="accumulatePoints != null">
-        accumulate_points,
-      </if>
-      <if test="balance != null">
-        balance,
-      </if>
-      <if test="memberLevel != null">
-        member_level,
-      </if>
-      <if test="userIsDel != null">
-        user_is_del,
-      </if>
-      <if test="userPassword != null">
-        user_password,
-      </if>
-      <if test="userCoupon != null">
-        user_coupon,
-      </if>
-      <if test="userCardNo != null">
-        user_card_no,
-      </if>
-      <if test="userGender != null">
-        user_gender,
-      </if>
-      <if test="userBirth != null">
-        user_birth,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        #{userId,jdbcType=VARCHAR},
-      </if>
-      <if test="userName != null">
-        #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="userPhone != null">
-        #{userPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="accumulatePoints != null">
-        #{accumulatePoints,jdbcType=INTEGER},
-      </if>
-      <if test="balance != null">
-        #{balance,jdbcType=DECIMAL},
-      </if>
-      <if test="memberLevel != null">
-        #{memberLevel,jdbcType=VARCHAR},
-      </if>
-      <if test="userIsDel != null">
-        #{userIsDel,jdbcType=INTEGER},
-      </if>
-      <if test="userPassword != null">
-        #{userPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="userCoupon != null">
-        #{userCoupon,jdbcType=VARCHAR},
-      </if>
-      <if test="userCardNo != null">
-        #{userCardNo,jdbcType=VARCHAR},
-      </if>
-      <if test="userGender != null">
-        #{userGender,jdbcType=VARCHAR},
-      </if>
-      <if test="userBirth != null">
-        #{userBirth,jdbcType=DATE},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.ylm.pojo.DcUserExample" resultType="java.lang.Integer">
-    select count(*) from dc_user
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update dc_user
-    <set>
-      <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userName != null">
-        user_name = #{record.userName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userPhone != null">
-        user_phone = #{record.userPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="record.accumulatePoints != null">
-        accumulate_points = #{record.accumulatePoints,jdbcType=INTEGER},
-      </if>
-      <if test="record.balance != null">
-        balance = #{record.balance,jdbcType=DECIMAL},
-      </if>
-      <if test="record.memberLevel != null">
-        member_level = #{record.memberLevel,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userIsDel != null">
-        user_is_del = #{record.userIsDel,jdbcType=INTEGER},
-      </if>
-      <if test="record.userPassword != null">
-        user_password = #{record.userPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userCoupon != null">
-        user_coupon = #{record.userCoupon,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userCardNo != null">
-        user_card_no = #{record.userCardNo,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userGender != null">
-        user_gender = #{record.userGender,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userBirth != null">
-        user_birth = #{record.userBirth,jdbcType=DATE},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update dc_user
-    set user_id = #{record.userId,jdbcType=VARCHAR},
-    user_name = #{record.userName,jdbcType=VARCHAR},
-    user_phone = #{record.userPhone,jdbcType=VARCHAR},
-    accumulate_points = #{record.accumulatePoints,jdbcType=INTEGER},
-    balance = #{record.balance,jdbcType=DECIMAL},
-    member_level = #{record.memberLevel,jdbcType=VARCHAR},
-    user_is_del = #{record.userIsDel,jdbcType=INTEGER},
-    user_password = #{record.userPassword,jdbcType=VARCHAR},
-    user_coupon = #{record.userCoupon,jdbcType=VARCHAR},
-    user_card_no = #{record.userCardNo,jdbcType=VARCHAR},
-    user_gender = #{record.userGender,jdbcType=VARCHAR},
-    user_birth = #{record.userBirth,jdbcType=DATE}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ylm.pojo.DcUser">
-    update dc_user
-    <set>
-      <if test="userName != null">
-        user_name = #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="userPhone != null">
-        user_phone = #{userPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="accumulatePoints != null">
-        accumulate_points = #{accumulatePoints,jdbcType=INTEGER},
-      </if>
-      <if test="balance != null">
-        balance = #{balance,jdbcType=DECIMAL},
-      </if>
-      <if test="memberLevel != null">
-        member_level = #{memberLevel,jdbcType=VARCHAR},
-      </if>
-      <if test="userIsDel != null">
-        user_is_del = #{userIsDel,jdbcType=INTEGER},
-      </if>
-      <if test="userPassword != null">
-        user_password = #{userPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="userCoupon != null">
-        user_coupon = #{userCoupon,jdbcType=VARCHAR},
-      </if>
-      <if test="userCardNo != null">
-        user_card_no = #{userCardNo,jdbcType=VARCHAR},
-      </if>
-      <if test="userGender != null">
-        user_gender = #{userGender,jdbcType=VARCHAR},
-      </if>
-      <if test="userBirth != null">
-        user_birth = #{userBirth,jdbcType=DATE},
-      </if>
-    </set>
-    where user_id = #{userId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.ylm.pojo.DcUser">
-    update dc_user
-    set user_name = #{userName,jdbcType=VARCHAR},
-      user_phone = #{userPhone,jdbcType=VARCHAR},
-      accumulate_points = #{accumulatePoints,jdbcType=INTEGER},
-      balance = #{balance,jdbcType=DECIMAL},
-      member_level = #{memberLevel,jdbcType=VARCHAR},
-      user_is_del = #{userIsDel,jdbcType=INTEGER},
-      user_password = #{userPassword,jdbcType=VARCHAR},
-      user_coupon = #{userCoupon,jdbcType=VARCHAR},
-      user_card_no = #{userCardNo,jdbcType=VARCHAR},
-      user_gender = #{userGender,jdbcType=VARCHAR},
-      user_birth = #{userBirth,jdbcType=DATE}
-    where user_id = #{userId,jdbcType=VARCHAR}
-  </update>
+    <update id="deleteByPrimaryKeys" parameterType="java.util.List">
+        UPDATE dc_user
+        SET user_is_del = 1
+        WHERE user_id IN
+        <foreach collection="list" index="index" item="item"
+                 separator="," open="(" close=")">
+            #{item,jdbcType=INTEGER}
+        </foreach>
+    </update>
 
 </mapper>
