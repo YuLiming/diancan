@@ -51,6 +51,14 @@ public class DcOrderController {
                 new BaseResult(false,"修改订单失败");
     }
 
+    @RequestMapping("/editOrderDetailSubmit")
+    @ResponseBody
+    public Object editOrderDetailSubmit(@RequestParam(value = "orderId") String orderId,@RequestParam(value = "foodIds") String foodIds,@RequestParam(value = "foodNum") String foodNum){
+        return dcOrderService.updateOrderDetailByPrimaryKey(orderId, foodIds, foodNum)>0?
+                new BaseResult(true,"修改成功"):
+                new BaseResult(false,"修改失败");
+    }
+
     @RequestMapping("/deleteOrder")
     @ResponseBody
     public Object deleteOrder(@RequestParam(value = "id",required = false,defaultValue = "1")String id){

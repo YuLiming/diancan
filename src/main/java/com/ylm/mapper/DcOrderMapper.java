@@ -33,4 +33,6 @@ public interface DcOrderMapper {
     int updateByPrimaryKey(DcOrder record);
 
     List<DcOrder> selectOrderNum(@Param("startTime") String startTime,@Param("endTime") String endTime);
+
+    int updateOrderDetailByPrimaryKey(@Param("orderId") String orderId,@Param("foodIds") String foodIds,@Param("foodNum") String foodNum);
 }

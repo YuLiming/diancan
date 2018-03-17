@@ -89,8 +89,9 @@
     from dc_administrators
     where admin_id = #{adminId,jdbcType=INTEGER}
   </select>
-  <select id="selectUserByNameAndPwd" parameterType="map" resultType="DcAdministrators">
-    SELECT admin_account,admin_password
+  <select id="selectUserByNameAndPwd" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
     FROM dc_administrators
     WHERE admin_account = #{account,jdbcType=VARCHAR} and admin_password = #{password,jdbcType=VARCHAR}
   </select>

@@ -9,12 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @CrossOrigin
+@SessionAttributes(value = {"name","password"},types = {String.class,String.class})
 public class DcLoginController {
 
     @Autowired
@@ -50,6 +53,13 @@ public class DcLoginController {
         }
         return result;
     }
+//
+//    @RequestMapping("/session/attributes/test")
+//    @ResponseBody
+//    public String sessionAttributesage(HttpSession session){
+//        String name = (String) session.getAttribute("name");
+//        return name;
+//    }
 
     @RequestMapping("/selectAdmin")
     @ResponseBody

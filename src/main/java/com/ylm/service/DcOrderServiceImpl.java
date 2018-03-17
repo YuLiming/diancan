@@ -46,4 +46,9 @@ public class DcOrderServiceImpl implements DcOrderService {
     public List<DcOrder> selectOrderNum(String startTime, String endTime) {
         return dcOrderMapper.selectOrderNum(startTime, endTime);
     }
+
+    @Override
+    public int updateOrderDetailByPrimaryKey(String orderId, String foodIds, String foodNum) {
+        return dcOrderMapper.updateOrderDetailByPrimaryKey(orderId, foodIds, foodNum);
+    }
 }

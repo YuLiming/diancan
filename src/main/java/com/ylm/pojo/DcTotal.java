@@ -18,7 +18,7 @@ public class DcTotal {
         this.money = money;
     }
 
-    public String getData(){
+    public String getDate(){
         return date;
     }
 

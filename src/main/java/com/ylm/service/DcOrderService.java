@@ -21,4 +21,6 @@ public interface DcOrderService {
 
     List<DcOrder> selectOrderNum(String startTime,String endTime);
 
+    int updateOrderDetailByPrimaryKey(String orderId,String foodIds,String foodNum);
+
 }
