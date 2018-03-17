@@ -12,6 +12,8 @@
     <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
     <result column="user_coupon" jdbcType="VARCHAR" property="userCoupon" />
     <result column="user_card_no" jdbcType="VARCHAR" property="userCardNo" />
+    <result column="user_gender" jdbcType="VARCHAR" property="userGender" />
+    <result column="user_birth" jdbcType="DATE" property="userBirth" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, user_name, user_phone, accumulate_points, balance, member_level, user_is_del,
-    user_password, user_coupon, user_card_no
+    user_id, user_name, user_phone, accumulate_points, balance, member_level, user_is_del, 
+    user_password, user_coupon, user_card_no, user_gender, user_birth
   </sql>
   <select id="selectByExample" parameterType="com.ylm.pojo.DcUserExample" resultMap="BaseResultMap">
     select
@@ -90,7 +92,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
+    select 
     <include refid="Base_Column_List" />
     from dc_user
     where user_id = #{userId,jdbcType=VARCHAR}
@@ -106,14 +108,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.ylm.pojo.DcUser">
-    insert into dc_user (user_id, user_name, user_phone,
-      accumulate_points, balance, member_level,
-      user_is_del, user_password, user_coupon,
-      user_card_no)
-    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR},
-      #{accumulatePoints,jdbcType=INTEGER}, #{balance,jdbcType=DECIMAL}, #{memberLevel,jdbcType=VARCHAR},
-      #{userIsDel,jdbcType=INTEGER}, #{userPassword,jdbcType=VARCHAR}, #{userCoupon,jdbcType=VARCHAR},
-      #{userCardNo,jdbcType=VARCHAR})
+    insert into dc_user (user_id, user_name, user_phone, 
+      accumulate_points, balance, member_level, 
+      user_is_del, user_password, user_coupon, 
+      user_card_no, user_gender, user_birth
+      )
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, 
+      #{accumulatePoints,jdbcType=INTEGER}, #{balance,jdbcType=DECIMAL}, #{memberLevel,jdbcType=VARCHAR}, 
+      #{userIsDel,jdbcType=INTEGER}, #{userPassword,jdbcType=VARCHAR}, #{userCoupon,jdbcType=VARCHAR}, 
+      #{userCardNo,jdbcType=VARCHAR}, #{userGender,jdbcType=VARCHAR}, #{userBirth,jdbcType=DATE}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.ylm.pojo.DcUser">
     insert into dc_user
@@ -148,6 +152,12 @@
       <if test="userCardNo != null">
         user_card_no,
       </if>
+      <if test="userGender != null">
+        user_gender,
+      </if>
+      <if test="userBirth != null">
+        user_birth,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -179,6 +189,12 @@
       </if>
       <if test="userCardNo != null">
         #{userCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userGender != null">
+        #{userGender,jdbcType=VARCHAR},
+      </if>
+      <if test="userBirth != null">
+        #{userBirth,jdbcType=DATE},
       </if>
     </trim>
   </insert>
@@ -221,6 +237,12 @@
       <if test="record.userCardNo != null">
         user_card_no = #{record.userCardNo,jdbcType=VARCHAR},
       </if>
+      <if test="record.userGender != null">
+        user_gender = #{record.userGender,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userBirth != null">
+        user_birth = #{record.userBirth,jdbcType=DATE},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -237,7 +259,9 @@
       user_is_del = #{record.userIsDel,jdbcType=INTEGER},
       user_password = #{record.userPassword,jdbcType=VARCHAR},
       user_coupon = #{record.userCoupon,jdbcType=VARCHAR},
-      user_card_no = #{record.userCardNo,jdbcType=VARCHAR}
+      user_card_no = #{record.userCardNo,jdbcType=VARCHAR},
+      user_gender = #{record.userGender,jdbcType=VARCHAR},
+      user_birth = #{record.userBirth,jdbcType=DATE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -272,6 +296,12 @@
       <if test="userCardNo != null">
         user_card_no = #{userCardNo,jdbcType=VARCHAR},
       </if>
+      <if test="userGender != null">
+        user_gender = #{userGender,jdbcType=VARCHAR},
+      </if>
+      <if test="userBirth != null">
+        user_birth = #{userBirth,jdbcType=DATE},
+      </if>
     </set>
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
@@ -285,7 +315,9 @@
       user_is_del = #{userIsDel,jdbcType=INTEGER},
       user_password = #{userPassword,jdbcType=VARCHAR},
       user_coupon = #{userCoupon,jdbcType=VARCHAR},
-      user_card_no = #{userCardNo,jdbcType=VARCHAR}
+      user_card_no = #{userCardNo,jdbcType=VARCHAR},
+      user_gender = #{userGender,jdbcType=VARCHAR},
+      user_birth = #{userBirth,jdbcType=DATE}
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
   <resultMap id="BaseResultMap" type="com.ylm.pojo.DcUser">
@@ -293,11 +325,14 @@
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
     <result column="accumulate_points" jdbcType="INTEGER" property="accumulatePoints" />
-    <result column="balance" jdbcType="INTEGER" property="balance" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
     <result column="member_level" jdbcType="VARCHAR" property="memberLevel" />
     <result column="user_is_del" jdbcType="INTEGER" property="userIsDel" />
     <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
     <result column="user_coupon" jdbcType="VARCHAR" property="userCoupon" />
+    <result column="user_card_no" jdbcType="VARCHAR" property="userCardNo" />
+    <result column="user_gender" jdbcType="VARCHAR" property="userGender" />
+    <result column="user_birth" jdbcType="DATE" property="userBirth" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -358,8 +393,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, user_name, user_phone, accumulate_points, balance, member_level, user_is_del,
-    user_password, user_coupon
+    user_id, user_name, user_phone, accumulate_points, balance, member_level, user_is_del, 
+    user_password, user_coupon, user_card_no, user_gender, user_birth
   </sql>
   <select id="selectByExample" parameterType="com.ylm.pojo.DcUserExample" resultMap="BaseResultMap">
     select
@@ -381,11 +416,11 @@
     from dc_user
     where user_id = #{userId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <update id="deleteByPrimaryKey" parameterType="java.lang.String">
     UPDATE dc_user
     SET user_is_del = 1
     where user_id = #{userId,jdbcType=VARCHAR}
-  </delete>
+  </update>
   <delete id="deleteByExample" parameterType="com.ylm.pojo.DcUserExample">
     delete from dc_user
     <if test="_parameter != null">
@@ -393,13 +428,15 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.ylm.pojo.DcUser">
-    insert into dc_user (user_id, user_name, user_phone,
-      accumulate_points, balance, member_level,
-      user_is_del, user_password, user_coupon
+    insert into dc_user (user_id, user_name, user_phone, 
+      accumulate_points, balance, member_level, 
+      user_is_del, user_password, user_coupon, 
+      user_card_no, user_gender, user_birth
       )
-    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR},
-      #{accumulatePoints,jdbcType=INTEGER}, #{balance,jdbcType=INTEGER}, #{memberLevel,jdbcType=VARCHAR},
-      #{userIsDel,jdbcType=INTEGER}, #{userPassword,jdbcType=VARCHAR}, #{userCoupon,jdbcType=VARCHAR}
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, 
+      #{accumulatePoints,jdbcType=INTEGER}, #{balance,jdbcType=DECIMAL}, #{memberLevel,jdbcType=VARCHAR}, 
+      #{userIsDel,jdbcType=INTEGER}, #{userPassword,jdbcType=VARCHAR}, #{userCoupon,jdbcType=VARCHAR}, 
+      #{userCardNo,jdbcType=VARCHAR}, #{userGender,jdbcType=VARCHAR}, #{userBirth,jdbcType=DATE}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.ylm.pojo.DcUser">
@@ -432,6 +469,15 @@
       <if test="userCoupon != null">
         user_coupon,
       </if>
+      <if test="userCardNo != null">
+        user_card_no,
+      </if>
+      <if test="userGender != null">
+        user_gender,
+      </if>
+      <if test="userBirth != null">
+        user_birth,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -447,7 +493,7 @@
         #{accumulatePoints,jdbcType=INTEGER},
       </if>
       <if test="balance != null">
-        #{balance,jdbcType=INTEGER},
+        #{balance,jdbcType=DECIMAL},
       </if>
       <if test="memberLevel != null">
         #{memberLevel,jdbcType=VARCHAR},
@@ -460,6 +506,15 @@
       </if>
       <if test="userCoupon != null">
         #{userCoupon,jdbcType=VARCHAR},
+      </if>
+      <if test="userCardNo != null">
+        #{userCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userGender != null">
+        #{userGender,jdbcType=VARCHAR},
+      </if>
+      <if test="userBirth != null">
+        #{userBirth,jdbcType=DATE},
       </if>
     </trim>
   </insert>
@@ -485,7 +540,7 @@
         accumulate_points = #{record.accumulatePoints,jdbcType=INTEGER},
       </if>
       <if test="record.balance != null">
-        balance = #{record.balance,jdbcType=INTEGER},
+        balance = #{record.balance,jdbcType=DECIMAL},
       </if>
       <if test="record.memberLevel != null">
         member_level = #{record.memberLevel,jdbcType=VARCHAR},
@@ -499,6 +554,15 @@
       <if test="record.userCoupon != null">
         user_coupon = #{record.userCoupon,jdbcType=VARCHAR},
       </if>
+      <if test="record.userCardNo != null">
+        user_card_no = #{record.userCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userGender != null">
+        user_gender = #{record.userGender,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userBirth != null">
+        user_birth = #{record.userBirth,jdbcType=DATE},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -507,14 +571,17 @@
   <update id="updateByExample" parameterType="map">
     update dc_user
     set user_id = #{record.userId,jdbcType=VARCHAR},
-      user_name = #{record.userName,jdbcType=VARCHAR},
-      user_phone = #{record.userPhone,jdbcType=VARCHAR},
-      accumulate_points = #{record.accumulatePoints,jdbcType=INTEGER},
-      balance = #{record.balance,jdbcType=INTEGER},
-      member_level = #{record.memberLevel,jdbcType=VARCHAR},
-      user_is_del = #{record.userIsDel,jdbcType=INTEGER},
-      user_password = #{record.userPassword,jdbcType=VARCHAR},
-      user_coupon = #{record.userCoupon,jdbcType=VARCHAR}
+    user_name = #{record.userName,jdbcType=VARCHAR},
+    user_phone = #{record.userPhone,jdbcType=VARCHAR},
+    accumulate_points = #{record.accumulatePoints,jdbcType=INTEGER},
+    balance = #{record.balance,jdbcType=DECIMAL},
+    member_level = #{record.memberLevel,jdbcType=VARCHAR},
+    user_is_del = #{record.userIsDel,jdbcType=INTEGER},
+    user_password = #{record.userPassword,jdbcType=VARCHAR},
+    user_coupon = #{record.userCoupon,jdbcType=VARCHAR},
+    user_card_no = #{record.userCardNo,jdbcType=VARCHAR},
+    user_gender = #{record.userGender,jdbcType=VARCHAR},
+    user_birth = #{record.userBirth,jdbcType=DATE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -532,7 +599,7 @@
         accumulate_points = #{accumulatePoints,jdbcType=INTEGER},
       </if>
       <if test="balance != null">
-        balance = #{balance,jdbcType=INTEGER},
+        balance = #{balance,jdbcType=DECIMAL},
       </if>
       <if test="memberLevel != null">
         member_level = #{memberLevel,jdbcType=VARCHAR},
@@ -546,6 +613,15 @@
       <if test="userCoupon != null">
         user_coupon = #{userCoupon,jdbcType=VARCHAR},
       </if>
+      <if test="userCardNo != null">
+        user_card_no = #{userCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userGender != null">
+        user_gender = #{userGender,jdbcType=VARCHAR},
+      </if>
+      <if test="userBirth != null">
+        user_birth = #{userBirth,jdbcType=DATE},
+      </if>
     </set>
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
@@ -554,19 +630,15 @@
     set user_name = #{userName,jdbcType=VARCHAR},
       user_phone = #{userPhone,jdbcType=VARCHAR},
       accumulate_points = #{accumulatePoints,jdbcType=INTEGER},
-      balance = #{balance,jdbcType=INTEGER},
+      balance = #{balance,jdbcType=DECIMAL},
       member_level = #{memberLevel,jdbcType=VARCHAR},
       user_is_del = #{userIsDel,jdbcType=INTEGER},
       user_password = #{userPassword,jdbcType=VARCHAR},
-      user_coupon = #{userCoupon,jdbcType=VARCHAR}
+      user_coupon = #{userCoupon,jdbcType=VARCHAR},
+      user_card_no = #{userCardNo,jdbcType=VARCHAR},
+      user_gender = #{userGender,jdbcType=VARCHAR},
+      user_birth = #{userBirth,jdbcType=DATE}
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
-  <update id="deleteByPrimaryKeys" parameterType="java.util.List">
-    UPDATE dc_user
-    SET user_is_del = 1
-    WHERE dc_user.user_id in
-    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
-      #{item,jdbcType=INTEGER}
-    </foreach>
-  </update>
+
 </mapper>

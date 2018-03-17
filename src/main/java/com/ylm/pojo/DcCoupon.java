@@ -9,13 +9,13 @@ public class DcCoupon {
 
     private Integer discount;
 
-    private Date expiryTime;
+    private String expiryTime;
 
     private String remark;
 
     private Integer couponIsdel;
 
-    private Date startTime;
+    private String startTime;
 
     public Integer getCouponId() {
         return couponId;
@@ -41,11 +41,11 @@ public class DcCoupon {
         this.discount = discount;
     }
 
-    public Date getExpiryTime() {
+    public String getExpiryTime() {
         return expiryTime;
     }
 
-    public void setExpiryTime(Date expiryTime) {
+    public void setExpiryTime(String expiryTime) {
         this.expiryTime = expiryTime;
     }
 
@@ -65,11 +65,11 @@ public class DcCoupon {
         this.couponIsdel = couponIsdel;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 }

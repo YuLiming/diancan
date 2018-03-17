@@ -1,7 +1,6 @@
 package com.ylm.pojo;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class DcCouponExample {
@@ -295,52 +294,52 @@ public class DcCouponExample {
             return (Criteria) this;
         }
 
-        public Criteria andExpiryTimeEqualTo(Date value) {
+        public Criteria andExpiryTimeEqualTo(String value) {
             addCriterion("expiry_time =", value, "expiryTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpiryTimeNotEqualTo(Date value) {
+        public Criteria andExpiryTimeNotEqualTo(String value) {
             addCriterion("expiry_time <>", value, "expiryTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpiryTimeGreaterThan(Date value) {
+        public Criteria andExpiryTimeGreaterThan(String value) {
             addCriterion("expiry_time >", value, "expiryTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpiryTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andExpiryTimeGreaterThanOrEqualTo(String value) {
             addCriterion("expiry_time >=", value, "expiryTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpiryTimeLessThan(Date value) {
+        public Criteria andExpiryTimeLessThan(String value) {
             addCriterion("expiry_time <", value, "expiryTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpiryTimeLessThanOrEqualTo(Date value) {
+        public Criteria andExpiryTimeLessThanOrEqualTo(String value) {
             addCriterion("expiry_time <=", value, "expiryTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpiryTimeIn(List<Date> values) {
+        public Criteria andExpiryTimeIn(List<String> values) {
             addCriterion("expiry_time in", values, "expiryTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpiryTimeNotIn(List<Date> values) {
+        public Criteria andExpiryTimeNotIn(List<String> values) {
             addCriterion("expiry_time not in", values, "expiryTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpiryTimeBetween(Date value1, Date value2) {
+        public Criteria andExpiryTimeBetween(String value1, String value2) {
             addCriterion("expiry_time between", value1, value2, "expiryTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpiryTimeNotBetween(Date value1, Date value2) {
+        public Criteria andExpiryTimeNotBetween(String value1, String  value2) {
             addCriterion("expiry_time not between", value1, value2, "expiryTime");
             return (Criteria) this;
         }
@@ -485,52 +484,52 @@ public class DcCouponExample {
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeEqualTo(Date value) {
+        public Criteria andStartTimeEqualTo(String  value) {
             addCriterion("start_time =", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeNotEqualTo(Date value) {
+        public Criteria andStartTimeNotEqualTo(String value) {
             addCriterion("start_time <>", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeGreaterThan(Date value) {
+        public Criteria andStartTimeGreaterThan(String value) {
             addCriterion("start_time >", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andStartTimeGreaterThanOrEqualTo(String value) {
             addCriterion("start_time >=", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeLessThan(Date value) {
+        public Criteria andStartTimeLessThan(String value) {
             addCriterion("start_time <", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeLessThanOrEqualTo(Date value) {
+        public Criteria andStartTimeLessThanOrEqualTo(String value) {
             addCriterion("start_time <=", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeIn(List<Date> values) {
+        public Criteria andStartTimeIn(List<String> values) {
             addCriterion("start_time in", values, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeNotIn(List<Date> values) {
+        public Criteria andStartTimeNotIn(List<String> values) {
             addCriterion("start_time not in", values, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeBetween(Date value1, Date value2) {
+        public Criteria andStartTimeBetween(String value1, String value2) {
             addCriterion("start_time between", value1, value2, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeNotBetween(Date value1, Date value2) {
+        public Criteria andStartTimeNotBetween(String value1, String value2) {
             addCriterion("start_time not between", value1, value2, "startTime");
             return (Criteria) this;
         }

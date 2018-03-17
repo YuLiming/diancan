@@ -68,10 +68,18 @@ public class DcOrderController {
     @RequestMapping("/getOrderDetail")
     @ResponseBody
     public List<DcOrderDetail> getOrderDetail(@RequestParam(value = "foodId") String foodId,@RequestParam(value = "foodNum") String foodNum){
+        if (foodId==null||foodNum==null){
+            return null;
+        }
         List<DcOrderDetail> result = new ArrayList<DcOrderDetail>();
-        String[] ids = foodId.split("|");
-        String[] nums = foodNum.split("|");
-        List<DcFood> foods = dcFoodService.selectByPrimaryKeys(Arrays.asList(ids));
+        System.out.print(foodId+" num:"+foodNum);
+        String[] ids = foodId.split("\\|");
+        Integer[] id = new Integer[ids.length];
+        for (int i = 0;i<ids.length;i++){
+            id[i] = Integer.parseInt(ids[i]);
+        }
+        String[] nums = foodNum.split("\\|");
+        List<DcFood> foods = dcFoodService.selectByPrimaryKeys(Arrays.asList(id));
         for (int i = 0;i<foods.size();i++){
             result.add(new DcOrderDetail(foods.get(i),Integer.parseInt(nums[i])));
         }

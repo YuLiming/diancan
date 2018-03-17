@@ -27,6 +27,12 @@ public class DcCouponController {
         List<DcCoupon> list = dcCouponService.selectByExample(null);
         for (DcCoupon dcCoupon : list){
             if (dcCoupon.getCouponIsdel()==0){
+                String etimetmp = dcCoupon.getExpiryTime();
+                String stimetmp = dcCoupon.getStartTime();
+                String etime = dcCoupon.getExpiryTime().substring(0,etimetmp.length()-2);
+                String stime = dcCoupon.getStartTime().substring(0,stimetmp.length()-2);
+                dcCoupon.setExpiryTime(etime);
+                dcCoupon.setStartTime(stime);
                 result.add(dcCoupon);
             }
         }

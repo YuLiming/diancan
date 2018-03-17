@@ -10,7 +10,7 @@ public interface DcFoodService {
 
     DcFood selectByPrimaryKey(Integer foodId);
 
-    List<DcFood> selectByPrimaryKeys(List<String> foodIds);
+    List<DcFood> selectByPrimaryKeys(List<Integer> foodIds);
 
     int updateByPrimaryKey(DcFood record);
 

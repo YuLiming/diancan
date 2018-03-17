@@ -30,5 +30,5 @@ public interface DcFoodMapper {
 
     int deleteByPrimaryKeys(List<Integer> data);
 
-    List<DcFood> selectByPrimaryKeys(List<String> foodIds);
+    List<DcFood> selectByPrimaryKeys(List<Integer> foodIds);
 }
