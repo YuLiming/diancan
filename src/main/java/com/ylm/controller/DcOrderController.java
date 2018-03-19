@@ -54,6 +54,8 @@ public class DcOrderController {
     @RequestMapping("/editOrderDetailSubmit")
     @ResponseBody
     public Object editOrderDetailSubmit(@RequestParam(value = "orderId") String orderId,@RequestParam(value = "foodIds") String foodIds,@RequestParam(value = "foodNum") String foodNum){
+        foodIds = foodIds.replaceAll(",","|");
+        foodNum = foodNum.replaceAll(",","|");
         return dcOrderService.updateOrderDetailByPrimaryKey(orderId, foodIds, foodNum)>0?
                 new BaseResult(true,"修改成功"):
                 new BaseResult(false,"修改失败");

@@ -11,13 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @CrossOrigin
-@SessionAttributes(value = {"name","password"},types = {String.class,String.class})
 public class DcLoginController {
 
     @Autowired
@@ -30,10 +30,11 @@ public class DcLoginController {
 
     @RequestMapping(value = "/loginSubmit",method = RequestMethod.POST)
     @ResponseBody
-    public Object loginSubmit(@RequestParam(value = "name",required = false) String name,@RequestParam(value = "password",required = false) String password){
-        System.out.print(name+password);
+    public Object loginSubmit(@RequestParam(value = "name",required = false) String name, @RequestParam(value = "password",required = false) String password, HttpServletRequest request){
         int result = adminService.login(name,password);
         if (result== AdminServiceImpl.LOGIN_SUCCESS){
+            HttpSession session = request.getSession();
+
             return new BaseResult(true,"登陆成功");
         }else {
             return new BaseResult(false,"登陆失败");
@@ -53,13 +54,13 @@ public class DcLoginController {
         }
         return result;
     }
-//
-//    @RequestMapping("/session/attributes/test")
-//    @ResponseBody
-//    public String sessionAttributesage(HttpSession session){
-//        String name = (String) session.getAttribute("name");
-//        return name;
-//    }
+
+    @RequestMapping("/session/attributes/test")
+    @ResponseBody
+    public String sessionAttributesage(HttpSession session){
+        String name = (String) session.getAttribute("name");
+        return name;
+    }
 
     @RequestMapping("/selectAdmin")
     @ResponseBody

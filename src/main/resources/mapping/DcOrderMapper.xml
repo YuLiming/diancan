@@ -355,6 +355,6 @@
     UPDATE dc_order
     SET order_food = #{foodIds,jdbcType=VARCHAR},
     order_food_num = #{foodNum,jdbcType=VARCHAR}
-    where orderId = #{orderId,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=VARCHAR}
   </update>
 </mapper>
