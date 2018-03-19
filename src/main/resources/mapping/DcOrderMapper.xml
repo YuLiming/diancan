@@ -14,7 +14,7 @@
     <result column="coupon_id" property="couponId" jdbcType="VARCHAR" />
     <result column="order_food" property="orderFood" jdbcType="VARCHAR" />
     <result column="order_food_num" property="orderFoodNum" jdbcType="VARCHAR" />
-    <result column="order_paid" property="orderDiscountAmount" jdbcType="DECIMAL" />
+    <result column="order_paid" property="orderPaid" jdbcType="DECIMAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >

@@ -28,7 +28,7 @@ public class DcOrder {
 
     private String orderFoodNum;
 
-    private BigDecimal orderDiscountAmount;
+    private BigDecimal orderPaid;
 
     public String getOrderId() {
         return orderId;
@@ -126,11 +126,11 @@ public class DcOrder {
         this.orderFoodNum = orderFoodNum == null ? null : orderFoodNum.trim();
     }
 
-    public BigDecimal getOrderDiscountAmount() {
-        return orderDiscountAmount;
+    public BigDecimal getOrderPaid() {
+        return orderPaid;
     }
 
-    public void setOrderDiscountAmount(BigDecimal orderDiscountAmount) {
-        this.orderDiscountAmount = orderDiscountAmount;
+    public void setOrderPaid(BigDecimal orderPaid) {
+        this.orderPaid = orderPaid;
     }
 }

@@ -125,11 +125,11 @@ public class DcOrderController {
             if (map.containsKey(order.getOrderBoardDate())){
                 DcTotal totaltmp = map.get(order.getOrderBoardDate());
                 totaltmp.setPassengerFlow(totaltmp.getPassengerFlow()+order.getOrderPeopleNumber());
-                totaltmp.setMoney(order.getOrderDiscountAmount().add(totaltmp.getMoney()));
+                totaltmp.setMoney(order.getOrderPaid().add(totaltmp.getMoney()));
                 map.put(order.getOrderBoardDate(),totaltmp);
             }else {
                 map.put(order.getOrderBoardDate(),
-                        new DcTotal(order.getOrderBoardDate(),order.getOrderPeopleNumber(),order.getOrderDiscountAmount()));
+                        new DcTotal(order.getOrderBoardDate(),order.getOrderPeopleNumber(),order.getOrderPaid()));
             }
         }
         for (String str :map.keySet()){
