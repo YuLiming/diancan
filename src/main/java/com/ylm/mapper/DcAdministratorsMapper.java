@@ -20,6 +20,8 @@ public interface DcAdministratorsMapper {
 
     DcAdministrators selectByPrimaryKey(Integer adminId);
 
+    DcAdministrators selectByAccount(@Param("account") String account);
+
     DcAdministrators selectUserByNameAndPwd(@Param("account") String account,@Param("password") String password);
 
     int updateByExampleSelective(@Param("record") DcAdministrators record, @Param("example") DcAdministratorsExample example);

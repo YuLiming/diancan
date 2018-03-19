@@ -55,4 +55,9 @@ public class AdminServiceImpl implements AdminService {
     public int deleteByPrimaryKeys(List<Integer> data) {
         return administratorsMapper.deleteByPrimaryKeys(data);
     }
+
+    @Override
+    public DcAdministrators selectByAccount(String account) {
+        return administratorsMapper.selectByAccount(account);
+    }
 }

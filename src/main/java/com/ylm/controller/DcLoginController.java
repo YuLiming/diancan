@@ -2,6 +2,7 @@ package com.ylm.controller;
 
 
 import com.ylm.common.BaseResult;
+import com.ylm.common.JWT;
 import com.ylm.pojo.DcAdministrators;
 import com.ylm.service.AdminService;
 import com.ylm.service.AdminServiceImpl;
@@ -30,11 +31,11 @@ public class DcLoginController {
 
     @RequestMapping(value = "/loginSubmit",method = RequestMethod.POST)
     @ResponseBody
-    public Object loginSubmit(@RequestParam(value = "name",required = false) String name, @RequestParam(value = "password",required = false) String password, HttpServletRequest request){
+    public Object loginSubmit(HttpSession session,@RequestParam(value = "name",required = false) String name, @RequestParam(value = "password",required = false) String password, HttpServletRequest request){
         int result = adminService.login(name,password);
         if (result== AdminServiceImpl.LOGIN_SUCCESS){
-            HttpSession session = request.getSession();
-
+            DcAdministrators admin = adminService.selectByAccount(name);
+            session.setAttribute("user",admin);
             return new BaseResult(true,"登陆成功");
         }else {
             return new BaseResult(false,"登陆失败");

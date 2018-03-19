@@ -8,6 +8,8 @@ public class BaseResult implements Serializable {
 
     private static final int FAUIL = 400;
 
+    public static final int NOLOGIN = 403;
+
     private boolean success;
 
     // 消息失败的时候显示，成功前端自定义
@@ -15,6 +17,8 @@ public class BaseResult implements Serializable {
 
     // 操作结果代码 对应enums.CodeResultEnum,为以后手机端使用
     private int code;
+
+    private String token;
 
     // 对象
     private Object resultObj;
@@ -38,10 +42,30 @@ public class BaseResult implements Serializable {
         }
     }
 
-    public BaseResult(boolean isSuccess, String msg, Object obj) {
+    public BaseResult(boolean isSuccess, String msg,int code) {
+        this.success = isSuccess;
+        this.message = msg;
+        this.resultObj = null;
+        this.code = code;
+    }
+
+    public BaseResult(boolean isSuccess, String msg,String token) {
+        this.success = isSuccess;
+        this.message = msg;
+        this.resultObj = null;
+        this.token = token;
+        if (this.success) {
+            this.code = SUCCESS;
+        } else {
+            this.code = FAUIL;
+        }
+    }
+
+    public BaseResult(boolean isSuccess, String msg,String token, Object obj) {
         this.success = isSuccess;
         this.message = msg;
         this.resultObj = obj;
+        this.token = token;
         if (this.success) {
             this.code = SUCCESS;
         } else {
@@ -71,6 +95,14 @@ public class BaseResult implements Serializable {
 
     public void setResultObj(Object resultObj) {
         this.resultObj = resultObj;
+    }
+
+    public int getCode(){
+        return code;
+    }
+
+    public void setCode(int code){
+        this.code = code;
     }
 
 }

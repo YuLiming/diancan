@@ -21,4 +21,6 @@ public interface AdminService {
 
     int deleteByPrimaryKeys(List<Integer> data);
 
+    DcAdministrators selectByAccount(String account);
+
 }

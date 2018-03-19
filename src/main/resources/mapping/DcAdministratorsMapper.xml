@@ -95,6 +95,12 @@
     FROM dc_administrators
     WHERE admin_account = #{account,jdbcType=VARCHAR} and admin_password = #{password,jdbcType=VARCHAR}
   </select>
+  <select id="selectByAccount" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM dc_administrators
+    WHERE admin_account = #{account,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     UPDATE dc_administrators
     SET admin_isDel = 1
