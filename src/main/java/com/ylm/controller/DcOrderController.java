@@ -34,13 +34,25 @@ public class DcOrderController {
     @RequestMapping("/getOrders")
     @ResponseBody
     public List<DcOrder> getOrders(){
-        return dcOrderService.selectByExample(null);
+        List<DcOrder> list = dcOrderService.selectByExample(null);
+        List<DcOrder> result = new ArrayList<DcOrder>();
+        for (DcOrder order : list){
+            String tmp = order.getOrderDate();
+            String etime = order.getOrderDate().substring(0,tmp.length()-2);
+            order.setOrderDate(etime);
+            result.add(order);
+        }
+        return result;
     }
 
     @RequestMapping("/selectOrder")
     @ResponseBody
     public Object selectOrder(@RequestParam(value = "id",required = false,defaultValue = "1")String id ){
-        return dcOrderService.selectByPrimaryKey(id);
+        DcOrder order = dcOrderService.selectByPrimaryKey(id);
+        String tmp = order.getOrderDate();
+        String etime = order.getOrderDate().substring(0,tmp.length()-2);
+        order.setOrderDate(etime);
+        return order;
     }
 
     @RequestMapping("/editOrderSubmit")
