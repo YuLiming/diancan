@@ -63,6 +63,10 @@
             <mvc:exclude-mapping path="/loginSubmit"/>
             <bean class="com.ylm.common.AuthInterceptor"/>
         </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.ylm.common.LogInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 
 </beans>

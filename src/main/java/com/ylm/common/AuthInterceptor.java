@@ -15,8 +15,8 @@ public class AuthInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         HttpSession session = httpServletRequest.getSession();
-        DcAdministrators admin = (DcAdministrators)session.getAttribute("user");
-        if (admin!=null){
+        String id = httpServletRequest.getParameter("sessionId");
+        if (id!=null&&id.equals(session.getId())){
             return true;
         }else {
             httpServletResponse.setCharacterEncoding("UTF-8");

@@ -24,10 +24,11 @@ public class DcLoginController {
     @Autowired
     AdminService adminService;
 
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login")
     public String login(){
         return "login";
     }
+
 
     @RequestMapping(value = "/loginSubmit",method = RequestMethod.POST)
     @ResponseBody
@@ -36,7 +37,10 @@ public class DcLoginController {
         if (result== AdminServiceImpl.LOGIN_SUCCESS){
             DcAdministrators admin = adminService.selectByAccount(name);
             session.setAttribute("user",admin);
-            return new BaseResult(true,"登陆成功");
+            session.setMaxInactiveInterval(60*60*24);
+            String id= session.getId();
+            System.out.print(id);
+            return new BaseResult(true,"登陆成功",id);
         }else {
             return new BaseResult(false,"登陆失败");
         }

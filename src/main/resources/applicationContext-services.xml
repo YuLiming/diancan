@@ -10,5 +10,6 @@
     <bean id="foodTypeService" class="com.ylm.service.DcFoodTypeServiceImpl"/>
     <bean id="orderService" class="com.ylm.service.DcOrderServiceImpl"/>
     <bean id="couponService" class="com.ylm.service.DcCouponServiceImpl"/>
+    <bean id="syslogService" class="com.ylm.service.DcSysLogServiceImpl"/>
 
 </beans>

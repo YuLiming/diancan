@@ -18,7 +18,7 @@ public class BaseResult implements Serializable {
     // 操作结果代码 对应enums.CodeResultEnum,为以后手机端使用
     private int code;
 
-    private String token;
+    private String sessionId;
 
     // 对象
     private Object resultObj;
@@ -49,11 +49,11 @@ public class BaseResult implements Serializable {
         this.code = code;
     }
 
-    public BaseResult(boolean isSuccess, String msg,String token) {
+    public BaseResult(boolean isSuccess, String msg,String sessionId) {
         this.success = isSuccess;
         this.message = msg;
         this.resultObj = null;
-        this.token = token;
+        this.sessionId = sessionId;
         if (this.success) {
             this.code = SUCCESS;
         } else {
@@ -65,7 +65,7 @@ public class BaseResult implements Serializable {
         this.success = isSuccess;
         this.message = msg;
         this.resultObj = obj;
-        this.token = token;
+        this.sessionId = token;
         if (this.success) {
             this.code = SUCCESS;
         } else {
@@ -103,6 +103,14 @@ public class BaseResult implements Serializable {
 
     public void setCode(int code){
         this.code = code;
+    }
+
+    public String getSessionId(){
+        return sessionId;
+    }
+
+    public void setCode(String sessionId){
+        this.sessionId = sessionId;
     }
 
 }

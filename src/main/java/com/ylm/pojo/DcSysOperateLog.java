@@ -13,7 +13,7 @@ public class DcSysOperateLog {
 
     private Integer adminId;
 
-    private Date olAddDate;
+    private String olAddDate;
 
     private String olIp;
 
@@ -59,11 +59,11 @@ public class DcSysOperateLog {
         this.adminId = adminId;
     }
 
-    public Date getOlAddDate() {
+    public String getOlAddDate() {
         return olAddDate;
     }
 
-    public void setOlAddDate(Date olAddDate) {
+    public void setOlAddDate(String olAddDate) {
         this.olAddDate = olAddDate;
     }
 
