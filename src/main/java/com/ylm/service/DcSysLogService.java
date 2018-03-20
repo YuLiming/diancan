@@ -7,6 +7,11 @@ import java.util.List;
 
 public interface DcSysLogService {
 
+    /**
+     *
+     * @param example
+     * @return
+     */
     int countByExample(DcSysOperateLogExample example);
 
     int deleteByExample(DcSysOperateLogExample example);

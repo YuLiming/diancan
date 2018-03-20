@@ -8,11 +8,10 @@ import com.ylm.service.AdminService;
 import com.ylm.service.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,14 +31,11 @@ public class DcLoginController {
 
     @RequestMapping(value = "/loginSubmit",method = RequestMethod.POST)
     @ResponseBody
-    public Object loginSubmit(HttpSession session,@RequestParam(value = "name",required = false) String name, @RequestParam(value = "password",required = false) String password, HttpServletRequest request){
+    public Object loginSubmit(HttpSession session, @RequestParam(value = "name",required = false) String name, @RequestParam(value = "password",required = false) String password, HttpServletResponse response){
         int result = adminService.login(name,password);
         if (result== AdminServiceImpl.LOGIN_SUCCESS){
             DcAdministrators admin = adminService.selectByAccount(name);
-            session.setAttribute("user",admin);
-            session.setMaxInactiveInterval(60*60*24);
-            String id= session.getId();
-            System.out.print(id);
+            String id = JWT.sign(admin,60L* 1000L* 60L);
             return new BaseResult(true,"登陆成功",id);
         }else {
             return new BaseResult(false,"登陆失败");

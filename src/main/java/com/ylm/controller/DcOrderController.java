@@ -135,6 +135,9 @@ public class DcOrderController {
         }
         for (DcOrder order :data){
             if (map.containsKey(order.getOrderBoardDate())){
+                if (order.getOrderPaid()==null){
+                    order.setOrderPaid(new BigDecimal(0));
+                }
                 DcTotal totaltmp = map.get(order.getOrderBoardDate());
                 totaltmp.setPassengerFlow(totaltmp.getPassengerFlow()+order.getOrderPeopleNumber());
                 totaltmp.setMoney(order.getOrderPaid().add(totaltmp.getMoney()));

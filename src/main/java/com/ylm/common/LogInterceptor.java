@@ -24,7 +24,8 @@ public class LogInterceptor implements HandlerInterceptor {
         String uri = request.getRequestURI();
         if (uri.contains("delete")||uri.contains("Submit")){
             DcSysOperateLog log = new DcSysOperateLog();
-            DcAdministrators admin = (DcAdministrators)request.getSession().getAttribute("user");
+            String id = request.getParameter("sessionId");
+            DcAdministrators admin = JWT.unsign(id,DcAdministrators.class);
             if (admin!=null){
                 log.setAdminId(admin.getAdminId());
             }else {
