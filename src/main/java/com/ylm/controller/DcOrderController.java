@@ -1,6 +1,7 @@
 package com.ylm.controller;
 
 import com.ylm.common.BaseResult;
+import com.ylm.common.InfoConstant;
 import com.ylm.pojo.DcFood;
 import com.ylm.pojo.DcOrder;
 import com.ylm.pojo.DcOrderDetail;
@@ -34,13 +35,17 @@ public class DcOrderController {
     @RequestMapping("/getOrders")
     @ResponseBody
     public List<DcOrder> getOrders(){
-        List<DcOrder> list = dcOrderService.selectByExample(null);
         List<DcOrder> result = new ArrayList<DcOrder>();
-        for (DcOrder order : list){
-            String tmp = order.getOrderDate();
-            String etime = order.getOrderDate().substring(0,tmp.length()-2);
-            order.setOrderDate(etime);
-            result.add(order);
+        try {
+            List<DcOrder> list = dcOrderService.selectByExample(null);
+            for (DcOrder order : list){
+                String tmp = order.getOrderDate();
+                String etime = order.getOrderDate().substring(0,tmp.length()-2);
+                order.setOrderDate(etime);
+                result.add(order);
+            }
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
         }
         return result;
     }
@@ -48,108 +53,146 @@ public class DcOrderController {
     @RequestMapping("/selectOrder")
     @ResponseBody
     public Object selectOrder(@RequestParam(value = "id",required = false,defaultValue = "1")String id ){
-        DcOrder order = dcOrderService.selectByPrimaryKey(id);
-        String tmp = order.getOrderDate();
-        String etime = order.getOrderDate().substring(0,tmp.length()-2);
-        order.setOrderDate(etime);
+        DcOrder order = null;
+        try {
+            order = dcOrderService.selectByPrimaryKey(id);
+            String tmp = order.getOrderDate();
+            String etime = order.getOrderDate().substring(0,tmp.length()-2);
+            order.setOrderDate(etime);
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+        }
         return order;
     }
 
     @RequestMapping("/editOrderSubmit")
     @ResponseBody
     public Object editOrderSubmit(DcOrder order){
-        return dcOrderService.updateByPrimaryKey(order)>0?
-                new BaseResult(true,"修改订单成功"):
-                new BaseResult(false,"修改订单失败");
+        try {
+            return dcOrderService.updateByPrimaryKey(order)>0?
+                    new BaseResult(true,"修改订单成功"):
+                    new BaseResult(false,"修改订单失败");
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+            return new BaseResult(false, InfoConstant.ORDERTHROWABLE);
+        }
     }
 
     @RequestMapping("/editOrderDetailSubmit")
     @ResponseBody
     public Object editOrderDetailSubmit(@RequestParam(value = "orderId") String orderId,@RequestParam(value = "foodIds") String foodIds,@RequestParam(value = "foodNum") String foodNum){
-        foodIds = foodIds.replaceAll(",","|");
-        foodNum = foodNum.replaceAll(",","|");
-        return dcOrderService.updateOrderDetailByPrimaryKey(orderId, foodIds, foodNum)>0?
-                new BaseResult(true,"修改成功"):
-                new BaseResult(false,"修改失败");
+        try{
+            foodIds = foodIds.replaceAll(",","|");
+            foodNum = foodNum.replaceAll(",","|");
+            System.out.println("id:"+orderId+" ids:"+foodIds+" nums:"+foodNum);
+            return dcOrderService.updateOrderDetailByPrimaryKey(orderId, foodIds, foodNum)>0?
+                    new BaseResult(true,"修改成功"):
+                    new BaseResult(false,"修改失败");
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+            return new BaseResult(false,InfoConstant.ORDERTHROWABLE);
+        }
     }
 
     @RequestMapping("/deleteOrder")
     @ResponseBody
     public Object deleteOrder(@RequestParam(value = "id",required = false,defaultValue = "1")String id){
-        return dcOrderService.deleteByPrimaryKey(id)>0?
-                new BaseResult(true,"删除订单成功"):
-                new BaseResult(false,"删除订单失败");
+        try {
+            return dcOrderService.deleteByPrimaryKey(id)>0?
+                    new BaseResult(true,"删除订单成功"):
+                    new BaseResult(false,"删除订单失败");
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+            return new BaseResult(false,InfoConstant.ORDERTHROWABLE);
+        }
     }
 
 
     @RequestMapping("/deleteOrders")
     @ResponseBody
     public Object deleteOrders(@RequestParam("id[]") List<Integer> id){
-        return dcOrderService.deleteByPrimaryKeys(id)>0?
-                new BaseResult(true,"批量删除订单成功"):
-                new BaseResult(false,"批量删除订单失败");
+        try {
+            return dcOrderService.deleteByPrimaryKeys(id)>0?
+                    new BaseResult(true,"批量删除订单成功"):
+                    new BaseResult(false,"批量删除订单失败");
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+            return new BaseResult(false,InfoConstant.ORDERTHROWABLE);
+        }
     }
 
     @RequestMapping("/getOrderDetail")
     @ResponseBody
-    public List<DcOrderDetail> getOrderDetail(@RequestParam(value = "foodId") String foodId,@RequestParam(value = "foodNum") String foodNum){
-        if (foodId==null||foodNum==null){
-            return null;
+    public List<DcOrderDetail> getOrderDetail(@RequestParam(value = "orderId") String orderId){
+        try {
+            DcOrder order = dcOrderService.selectByPrimaryKey(orderId);
+            String foodId = order.getOrderFood();
+            String foodNum = order.getOrderFoodNum();
+            if (foodId==null||foodNum==null){
+                return null;
+            }
+            List<DcOrderDetail> result = new ArrayList<DcOrderDetail>();
+            String[] ids = foodId.split("\\|");
+            Integer[] id = new Integer[ids.length];
+            for (int i = 0;i<ids.length;i++){
+                id[i] = Integer.parseInt(ids[i]);
+            }
+            String[] nums = foodNum.split("\\|");
+            List<DcFood> foods = dcFoodService.selectByPrimaryKeys(Arrays.asList(id));
+            for (int i = 0;i<foods.size();i++){
+                result.add(new DcOrderDetail(foods.get(i),Integer.parseInt(nums[i])));
+            }
+            return result;
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+            return new ArrayList<DcOrderDetail>();
         }
-        List<DcOrderDetail> result = new ArrayList<DcOrderDetail>();
-        System.out.print(foodId+" num:"+foodNum);
-        String[] ids = foodId.split("\\|");
-        Integer[] id = new Integer[ids.length];
-        for (int i = 0;i<ids.length;i++){
-            id[i] = Integer.parseInt(ids[i]);
-        }
-        String[] nums = foodNum.split("\\|");
-        List<DcFood> foods = dcFoodService.selectByPrimaryKeys(Arrays.asList(id));
-        for (int i = 0;i<foods.size();i++){
-            result.add(new DcOrderDetail(foods.get(i),Integer.parseInt(nums[i])));
-        }
-        return result;
     }
 
     @RequestMapping("/getTotal")
     @ResponseBody
     public List<DcTotal> getPassengerFlow(){
-        Date date = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
-        String endTime = dateFormat.format(date);
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTime(date);
-        calendar.add(Calendar.DATE,-6);
-        Date startData = calendar.getTime();
-        String startTime = dateFormat.format(startData);
-        List<DcOrder> data = dcOrderService.selectOrderNum(startTime,endTime);
-        List<DcTotal> result = new ArrayList<DcTotal>();
-        LinkedHashMap<String,DcTotal> map = new LinkedHashMap<String, DcTotal>();
-        Calendar calendar2 = new GregorianCalendar();
-        calendar2.setTime(date);
-        calendar2.add(Calendar.DATE,-7);
-        for (int i = 0;i<7;i++){
-            calendar2.add(Calendar.DATE,1);
-            String tmp = dateFormat.format(calendar2.getTime());
-            map.put(tmp,new DcTotal(tmp));
-        }
-        for (DcOrder order :data){
-            if (map.containsKey(order.getOrderBoardDate())){
-                if (order.getOrderPaid()==null){
-                    order.setOrderPaid(new BigDecimal(0));
-                }
-                DcTotal totaltmp = map.get(order.getOrderBoardDate());
-                totaltmp.setPassengerFlow(totaltmp.getPassengerFlow()+order.getOrderPeopleNumber());
-                totaltmp.setMoney(order.getOrderPaid().add(totaltmp.getMoney()));
-                map.put(order.getOrderBoardDate(),totaltmp);
-            }else {
-                map.put(order.getOrderBoardDate(),
-                        new DcTotal(order.getOrderBoardDate(),order.getOrderPeopleNumber(),order.getOrderPaid()));
+        try{
+            Date date = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+            String endTime = dateFormat.format(date);
+            Calendar calendar = new GregorianCalendar();
+            calendar.setTime(date);
+            calendar.add(Calendar.DATE,-6);
+            Date startData = calendar.getTime();
+            String startTime = dateFormat.format(startData);
+            List<DcOrder> data = dcOrderService.selectOrderNum(startTime,endTime);
+            List<DcTotal> result = new ArrayList<DcTotal>();
+            LinkedHashMap<String,DcTotal> map = new LinkedHashMap<String, DcTotal>();
+            Calendar calendar2 = new GregorianCalendar();
+            calendar2.setTime(date);
+            calendar2.add(Calendar.DATE,-7);
+            for (int i = 0;i<7;i++){
+                calendar2.add(Calendar.DATE,1);
+                String tmp = dateFormat.format(calendar2.getTime());
+                map.put(tmp,new DcTotal(tmp));
             }
+            for (DcOrder order :data){
+                if (map.containsKey(order.getOrderBoardDate())){
+                    if (order.getOrderPaid()==null){
+                        order.setOrderPaid(new BigDecimal(0));
+                    }
+                    DcTotal totaltmp = map.get(order.getOrderBoardDate());
+                    totaltmp.setPassengerFlow(totaltmp.getPassengerFlow()+order.getOrderPeopleNumber());
+                    totaltmp.setMoney(order.getOrderPaid().add(totaltmp.getMoney()));
+                    map.put(order.getOrderBoardDate(),totaltmp);
+                }else {
+                    map.put(order.getOrderBoardDate(),
+                            new DcTotal(order.getOrderBoardDate(),order.getOrderPeopleNumber(),order.getOrderPaid()));
+                }
+            }
+            for (String str :map.keySet()){
+                result.add(map.get(str));
+            }
+            return result;
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+            return new ArrayList<DcTotal>();
         }
-        for (String str :map.keySet()){
-            result.add(map.get(str));
-        }
-        return result;
     }
 }

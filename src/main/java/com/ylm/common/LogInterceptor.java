@@ -42,7 +42,7 @@ public class LogInterceptor implements HandlerInterceptor {
             log.setOlModule(request.getRequestURI());
             if (uri.contains("delete")){
                 log.setOlType("删除");
-            }else if (uri.contains("submit")){
+            }else if (uri.contains("Submit")){
                 if (uri.contains("new")){
                     log.setOlType("新增");
                 }else {

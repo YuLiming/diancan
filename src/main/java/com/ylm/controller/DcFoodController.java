@@ -1,6 +1,7 @@
 package com.ylm.controller;
 
 import com.ylm.common.BaseResult;
+import com.ylm.common.InfoConstant;
 import com.ylm.mapper.DcFoodMapper;
 import com.ylm.pojo.DcBoard;
 import com.ylm.pojo.DcFood;
@@ -26,11 +27,15 @@ public class DcFoodController {
     @ResponseBody
     public List<DcFood> getFoods(){
         List<DcFood> result = new ArrayList<DcFood>();
-        List<DcFood> foods = dcFoodService.selectByExample(null);
-        for (DcFood food : foods){
-            if (food.getFoodIsdel()==0){
-                result.add(food);
+        try {
+            List<DcFood> foods = dcFoodService.selectByExample(null);
+            for (DcFood food : foods){
+                if (food.getFoodIsdel()==0){
+                    result.add(food);
+                }
             }
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
         }
         return result;
     }
@@ -38,41 +43,70 @@ public class DcFoodController {
     @RequestMapping("/selectFood")
     @ResponseBody
     public DcFood selectFood(@RequestParam(value = "id",required = false,defaultValue = "1")Integer id ){
-        return dcFoodService.selectByPrimaryKey(id);
+        DcFood dcFood = null;
+        try {
+            dcFood = dcFoodService.selectByPrimaryKey(id);
+            return dcFood;
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+        }
+        return dcFood;
     }
 
     @RequestMapping("/editFoodSubmit")
     @ResponseBody
     public Object editFoodSubmit(@ModelAttribute DcFood food){
-        food.setFoodIsdel(0);
-        return dcFoodService.updateByPrimaryKey(food)>0?
-                new BaseResult(true,"修改菜品成功"):
-                new BaseResult(false,"修改菜品失败");
+        try {
+            food.setFoodIsdel(0);
+            return dcFoodService.updateByPrimaryKey(food)>0?
+                    new BaseResult(true,InfoConstant.UPDATESUCCESS):
+                    new BaseResult(false,InfoConstant.UPDATEFAIL);
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+            return new BaseResult(false, InfoConstant.FOODTHROWABLE);
+        }
     }
 
     @RequestMapping("deleteFood")
     @ResponseBody
     public Object deleteFood(@RequestParam(value = "id",required = false,defaultValue = "1") Integer id){
-        return dcFoodService.deleteByPrimaryKey(id)>0?
-                new BaseResult(true,"删除菜品成功"):
-                new BaseResult(false,"删除菜品失败");
+        try {
+            return dcFoodService.deleteByPrimaryKey(id)>0?
+                    new BaseResult(true,InfoConstant.DELETESUCCESS):
+                    new BaseResult(false,InfoConstant.DELETEFAIL);
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+            return new BaseResult(false,InfoConstant.FOODTHROWABLE);
+        }
+
     }
 
 
     @RequestMapping("/newFoodSubmit")
     @ResponseBody
     public Object newFoodSubmit(DcFood dcFood){
-        dcFood.setFoodIsdel(0);
-        return dcFoodService.insert(dcFood)>0?
-                new BaseResult(true,"新增菜品成功"):
-                new BaseResult(false,"新增菜品失败");
+        try {
+            dcFood.setFoodIsdel(0);
+            return dcFoodService.insert(dcFood)>0?
+                    new BaseResult(true,InfoConstant.INSERTSUCCESS):
+                    new BaseResult(false,InfoConstant.INSERTFAIL);
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+            return new BaseResult(false,InfoConstant.FOODTHROWABLE);
+        }
     }
 
     @RequestMapping("/deleteFoods")
     @ResponseBody
     public Object deleteFoods(@RequestParam("id[]") List<Integer> id){
-        return dcFoodService.deleteByPrimaryKeys(id)>0?
-                new BaseResult(true,"批量删除菜品成功"):
-                new BaseResult(false,"批量删除菜品失败");
+        try {
+            return dcFoodService.deleteByPrimaryKeys(id)>0?
+                    new BaseResult(true,InfoConstant.DELETESUCCESS):
+                    new BaseResult(false,InfoConstant.DELETEFAIL);
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+            return new BaseResult(false,InfoConstant.FOODTHROWABLE);
+        }
+
     }
 }
