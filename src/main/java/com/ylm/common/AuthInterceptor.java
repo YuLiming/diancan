@@ -15,7 +15,9 @@ public class AuthInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         String id = httpServletRequest.getParameter("sessionId");
-        if (id!=null){
+        DcAdministrators admin = JWT.unsign(id,DcAdministrators.class);
+        System.out.println(id);
+        if (id!=null&&admin!=null){
             return true;
         }else {
             httpServletResponse.setCharacterEncoding("UTF-8");

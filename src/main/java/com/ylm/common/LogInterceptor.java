@@ -21,35 +21,39 @@ public class LogInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        String uri = request.getRequestURI();
-        if (uri.contains("delete")||uri.contains("Submit")){
-            DcSysOperateLog log = new DcSysOperateLog();
-            String id = request.getParameter("sessionId");
-            DcAdministrators admin = JWT.unsign(id,DcAdministrators.class);
-            if (admin!=null){
-                log.setAdminId(admin.getAdminId());
-            }else {
-                log.setAdminId(-1);
-            }
-            //获取系统时间
-            String time = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(new Date());
-            log.setOlAddDate(time);
-            //获取IP
-            String ip = request.getRemoteAddr();
-            log.setOlIp(ip);
-            //获取参数
-            log.setOlContent(request.getQueryString());
-            log.setOlModule(request.getRequestURI());
-            if (uri.contains("delete")){
-                log.setOlType("删除");
-            }else if (uri.contains("Submit")){
-                if (uri.contains("new")){
-                    log.setOlType("新增");
+        try {
+            String uri = request.getRequestURI();
+            if (uri.contains("delete")||uri.contains("Submit")){
+                DcSysOperateLog log = new DcSysOperateLog();
+                String id = request.getParameter("sessionId");
+                DcAdministrators admin = JWT.unsign(id,DcAdministrators.class);
+                if (admin!=null){
+                    log.setAdminId(admin.getAdminId());
                 }else {
-                    log.setOlType("修改");
+                    log.setAdminId(-1);
                 }
+                //获取系统时间
+                String time = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(new Date());
+                log.setOlAddDate(time);
+                //获取IP
+                String ip = request.getRemoteAddr();
+                log.setOlIp(ip);
+                //获取参数
+                log.setOlContent(request.getQueryString());
+                log.setOlModule(request.getRequestURI());
+                if (uri.contains("delete")){
+                    log.setOlType("删除");
+                }else if (uri.contains("Submit")){
+                    if (uri.contains("new")){
+                        log.setOlType("新增");
+                    }else {
+                        log.setOlType("修改");
+                    }
+                }
+                dcSysLogService.insert(log);
             }
-            dcSysLogService.insert(log);
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
         }
         return true;
     }

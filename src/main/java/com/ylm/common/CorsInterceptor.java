@@ -11,7 +11,7 @@ public class CorsInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         if (request.getHeader(HttpHeaders.ORIGIN) != null) {
-            response.addHeader("Access-Control-Allow-Origin", "http://127.0.0.1:8020");
+            response.addHeader("Access-Control-Allow-Origin", "http://192.168.1.160");
             response.addHeader("Access-Control-Allow-Credentials", "true");
             response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT, HEAD");
             response.addHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");

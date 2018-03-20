@@ -26,7 +26,7 @@ public class DcUser {
 
     private String userGender;
 
-    private Date userBirth;
+    private String userBirth;
 
     public String getUserId() {
         return userId;
@@ -116,11 +116,11 @@ public class DcUser {
         this.userGender = userGender == null ? null : userGender.trim();
     }
 
-    public Date getUserBirth() {
+    public String getUserBirth() {
         return userBirth;
     }
 
-    public void setUserBirth(Date userBirth) {
+    public void setUserBirth(String userBirth) {
         this.userBirth = userBirth;
     }
 }

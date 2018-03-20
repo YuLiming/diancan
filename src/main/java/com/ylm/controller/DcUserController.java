@@ -57,6 +57,7 @@ public class DcUserController {
                     new BaseResult(true,"修改会员信息成功"):
                     new BaseResult(false,"修改会员信息失败");
         }catch (Throwable throwable){
+            throwable.printStackTrace();
             return new BaseResult(true,InfoConstant.USERTHROWABLE);
         }
     }
