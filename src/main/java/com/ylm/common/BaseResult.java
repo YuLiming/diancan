@@ -49,6 +49,13 @@ public class BaseResult implements Serializable {
         this.code = code;
     }
 
+    public BaseResult(boolean isSuccess, String msg,int code,Object obj) {
+        this.success = isSuccess;
+        this.message = msg;
+        this.resultObj = obj;
+        this.code = code;
+    }
+
     public BaseResult(boolean isSuccess, String msg,String sessionId) {
         this.success = isSuccess;
         this.message = msg;

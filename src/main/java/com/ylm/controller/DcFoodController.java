@@ -18,6 +18,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -136,11 +141,14 @@ public class DcFoodController {
 
     @RequestMapping("/uploadFoodImg")
     @ResponseBody
-    public Object uploadFoodImg(MultipartFile pictureFile) throws Exception{
-        if (pictureFile.getSize() != 0) {
-            String path = UploadUtil.uploadImgToQiuniu(pictureFile);
+    public Object uploadFoodImg(@RequestParam("file") MultipartFile file) throws Exception{
+        if (file.getSize() != 0) {
+            String path = UploadUtil.uploadImgToQiuniu(file);
             System.out.println(path);
+            return new BaseResult(true,"上传图片成功",200,path);
+        }else {
+            return new BaseResult(false,"上传图片失败");
         }
-        return "ok";
+
     }
 }

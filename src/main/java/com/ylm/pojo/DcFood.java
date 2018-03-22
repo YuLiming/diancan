@@ -23,6 +23,8 @@ public class DcFood {
 
     private Integer foodIsdel;
 
+    private String foodImg;
+
     public Integer getFoodId() {
         return foodId;
     }
@@ -100,5 +102,13 @@ public class DcFood {
     }
     public String getFoodType(){
         return foodType;
+    }
+
+    public String getFoodImg(){
+        return foodImg;
+    }
+
+    public void setFoodImg(String img){
+        foodImg = img;
     }
 }

@@ -11,6 +11,7 @@
     <result column="food_monthlysales" property="foodMonthlysales" jdbcType="INTEGER" />
     <result column="food_vip_price" property="foodVipPrice" jdbcType="DECIMAL" />
     <result column="food_isDel" property="foodIsdel" jdbcType="INTEGER" />
+    <result column="food_img" property="foodImg" jdbcType="VARCHAR"/>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List" >
     food_id, food_name, food_type_id, food_price, food_remark, food_grounding, food_monthlysales, 
-    food_vip_price, food_isDel
+    food_vip_price, food_isDel,food_img
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ylm.pojo.DcFoodExample" >
     select
@@ -118,11 +119,11 @@
   <insert id="insert" parameterType="com.ylm.pojo.DcFood" >
     insert into dc_food (food_id, food_name, food_type_id, 
       food_price, food_remark, food_grounding, 
-      food_monthlysales, food_vip_price, food_isDel
+      food_monthlysales, food_vip_price, food_isDel,food_img
       )
     values (#{foodId,jdbcType=INTEGER}, #{foodName,jdbcType=VARCHAR}, #{foodTypeId,jdbcType=INTEGER}, 
       #{foodPrice,jdbcType=DECIMAL}, #{foodRemark,jdbcType=VARCHAR}, #{foodGrounding,jdbcType=INTEGER}, 
-      #{foodMonthlysales,jdbcType=INTEGER}, #{foodVipPrice,jdbcType=DECIMAL}, #{foodIsdel,jdbcType=INTEGER}
+      #{foodMonthlysales,jdbcType=INTEGER}, #{foodVipPrice,jdbcType=DECIMAL}, #{foodIsdel,jdbcType=INTEGER},#{foodImg,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.ylm.pojo.DcFood" >
@@ -237,7 +238,8 @@
       food_grounding = #{record.foodGrounding,jdbcType=INTEGER},
       food_monthlysales = #{record.foodMonthlysales,jdbcType=INTEGER},
       food_vip_price = #{record.foodVipPrice,jdbcType=DECIMAL},
-      food_isDel = #{record.foodIsdel,jdbcType=INTEGER}
+      food_isDel = #{record.foodIsdel,jdbcType=INTEGER},
+      food_img = #{record.foodImg,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -281,7 +283,8 @@
       food_grounding = #{foodGrounding,jdbcType=INTEGER},
       food_monthlysales = #{foodMonthlysales,jdbcType=INTEGER},
       food_vip_price = #{foodVipPrice,jdbcType=DECIMAL},
-      food_isDel = #{foodIsdel,jdbcType=INTEGER}
+      food_isDel = #{foodIsdel,jdbcType=INTEGER},
+      food_img = #{foodImg,jdbcType=VARCHAR}
     where food_id = #{foodId,jdbcType=INTEGER}
   </update>
   <update id="deleteByPrimaryKeys" parameterType="java.util.List">

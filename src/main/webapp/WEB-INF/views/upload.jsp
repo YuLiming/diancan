@@ -16,6 +16,11 @@
     <table width="100%" class="gridtable">
         <tr>
             <td>
+                <input type="text" name="id"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <input type="file" name="pictureFile" onchange="imgPreview(this)"/>
             </td>
         </tr>
