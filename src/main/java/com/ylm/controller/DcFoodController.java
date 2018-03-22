@@ -5,7 +5,9 @@ import com.ylm.common.InfoConstant;
 import com.ylm.mapper.DcFoodMapper;
 import com.ylm.pojo.DcBoard;
 import com.ylm.pojo.DcFood;
+import com.ylm.pojo.DcFoodtype;
 import com.ylm.service.DcFoodService;
+import com.ylm.service.DcFoodTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class DcFoodController {
@@ -23,14 +27,27 @@ public class DcFoodController {
     @Autowired
     private DcFoodService dcFoodService;
 
+    @Autowired
+    private DcFoodTypeService dcFoodTypeService;
+
     @RequestMapping("/getFoods")
     @ResponseBody
     public List<DcFood> getFoods(){
         List<DcFood> result = new ArrayList<DcFood>();
         try {
+            List<DcFoodtype> foodtypes = dcFoodTypeService.selectByExample(null);
+            Map<Integer,String> map = new HashMap<Integer, String>();
+            for (DcFoodtype foodtype : foodtypes){
+                if (foodtype.getFoodtypeIsdel()==0){
+                    map.put(foodtype.getFoodtypeId(),foodtype.getFoodtypeName());
+                }
+            }
             List<DcFood> foods = dcFoodService.selectByExample(null);
             for (DcFood food : foods){
                 if (food.getFoodIsdel()==0){
+                    if (map.containsKey(food.getFoodTypeId())){
+                        food.setFoodType(map.get(food.getFoodTypeId()));
+                    }
                     result.add(food);
                 }
             }

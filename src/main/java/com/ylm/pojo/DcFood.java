@@ -9,6 +9,8 @@ public class DcFood {
 
     private Integer foodTypeId;
 
+    private String foodType;
+
     private BigDecimal foodPrice;
 
     private String foodRemark;
@@ -91,5 +93,12 @@ public class DcFood {
 
     public void setFoodIsdel(Integer foodIsdel) {
         this.foodIsdel = foodIsdel;
+    }
+
+    public void setFoodType(String type){
+        this.foodType = type;
+    }
+    public String getFoodType(){
+        return foodType;
     }
 }

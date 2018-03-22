@@ -94,7 +94,8 @@ public class DcUserController {
 
     @RequestMapping("/deleteUsers")
     @ResponseBody
-    public Object deleteUsers(@RequestParam("id[]") List<Integer> id){
+    public Object deleteUsers(@RequestParam("id[]") List<String> id){
+        System.out.println(id.size());
         try {
             return dcUserService.deleteByPrimaryKeys(id)>0?
                     new BaseResult(true,"批量删除用户成功"):

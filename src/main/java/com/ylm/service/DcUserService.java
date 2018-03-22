@@ -47,5 +47,5 @@ public interface DcUserService {
      * @param userId
      * @return
      */
-    int deleteByPrimaryKeys(List<Integer> userId);
+    int deleteByPrimaryKeys(List<String> userId);
 }

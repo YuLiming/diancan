@@ -41,7 +41,7 @@ public class DcUserServiceImpl implements DcUserService {
     }
 
     @Override
-    public int deleteByPrimaryKeys(List<Integer> userId) {
+    public int deleteByPrimaryKeys(List<String> userId) {
         return dcUserMapper.deleteByPrimaryKeys(userId);
     }
 

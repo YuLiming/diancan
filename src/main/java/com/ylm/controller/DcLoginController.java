@@ -33,11 +33,12 @@ public class DcLoginController {
     @RequestMapping(value = "/loginSubmit",method = RequestMethod.POST)
     @ResponseBody
     public Object loginSubmit(@RequestParam(value = "name",required = false) String name, @RequestParam(value = "password",required = false) String password, HttpServletResponse response){
+        System.out.println(name+" "+password);
         try {
             int result = adminService.login(name,password);
             if (result== AdminServiceImpl.LOGIN_SUCCESS){
                 DcAdministrators admin = adminService.selectByAccount(name);
-                String id = JWT.sign(admin,60L* 1000L* 60L);
+                String id = JWT.sign(admin,60L* 1000L* 60L*60L);
                 return new BaseResult(true,"登陆成功",id);
             }else {
                 return new BaseResult(false,"登陆失败");
