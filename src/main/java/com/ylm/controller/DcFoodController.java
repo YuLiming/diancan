@@ -2,6 +2,7 @@ package com.ylm.controller;
 
 import com.ylm.common.BaseResult;
 import com.ylm.common.InfoConstant;
+import com.ylm.common.UploadUtil;
 import com.ylm.mapper.DcFoodMapper;
 import com.ylm.pojo.DcBoard;
 import com.ylm.pojo.DcFood;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -125,5 +127,20 @@ public class DcFoodController {
             return new BaseResult(false,InfoConstant.FOODTHROWABLE);
         }
 
+    }
+
+    @RequestMapping("/upload")
+    public String upload(){
+        return "upload";
+    }
+
+    @RequestMapping("/uploadFoodImg")
+    @ResponseBody
+    public Object uploadFoodImg(MultipartFile pictureFile) throws Exception{
+        if (pictureFile.getSize() != 0) {
+            String path = UploadUtil.uploadImgToQiuniu(pictureFile);
+            System.out.println(path);
+        }
+        return "ok";
     }
 }

@@ -313,8 +313,6 @@
       accumulate_points = #{accumulatePoints,jdbcType=INTEGER},
       balance = #{balance,jdbcType=DECIMAL},
       member_level = #{memberLevel,jdbcType=VARCHAR},
-      user_is_del = #{userIsDel,jdbcType=INTEGER},
-      user_password = #{userPassword,jdbcType=VARCHAR},
       user_coupon = #{userCoupon,jdbcType=VARCHAR},
       user_card_no = #{userCardNo,jdbcType=VARCHAR},
       user_gender = #{userGender,jdbcType=VARCHAR},
