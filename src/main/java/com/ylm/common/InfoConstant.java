@@ -28,4 +28,8 @@ public class InfoConstant {
     public static final String UPDATESUCCESS = "修改成功";
 
     public static final String UPDATEFAIL = "修改失败";
+
+    public static final String UPLOADIMGSUCCESS = "上传成功";
+
+    public static final String UPLOADIMGFAIL = "上传失败";
 }

@@ -70,8 +70,8 @@ public class DcOrderController {
     public Object editOrderSubmit(DcOrder order){
         try {
             return dcOrderService.updateByPrimaryKey(order)>0?
-                    new BaseResult(true,"修改订单成功"):
-                    new BaseResult(false,"修改订单失败");
+                    new BaseResult(true,InfoConstant.UPDATESUCCESS):
+                    new BaseResult(false,InfoConstant.UPDATEFAIL);
         }catch (Throwable throwable){
             throwable.printStackTrace();
             return new BaseResult(false, InfoConstant.ORDERTHROWABLE);
@@ -86,8 +86,8 @@ public class DcOrderController {
             foodNum = foodNum.replaceAll(",","|");
             System.out.println("id:"+orderId+" ids:"+foodIds+" nums:"+foodNum);
             return dcOrderService.updateOrderDetailByPrimaryKey(orderId, foodIds, foodNum)>0?
-                    new BaseResult(true,"修改成功"):
-                    new BaseResult(false,"修改失败");
+                    new BaseResult(true,InfoConstant.UPDATESUCCESS):
+                    new BaseResult(false,InfoConstant.UPDATEFAIL);
         }catch (Throwable throwable){
             throwable.printStackTrace();
             return new BaseResult(false,InfoConstant.ORDERTHROWABLE);
@@ -99,8 +99,8 @@ public class DcOrderController {
     public Object deleteOrder(@RequestParam(value = "id",required = false,defaultValue = "1")String id){
         try {
             return dcOrderService.deleteByPrimaryKey(id)>0?
-                    new BaseResult(true,"删除订单成功"):
-                    new BaseResult(false,"删除订单失败");
+                    new BaseResult(true,InfoConstant.DELETESUCCESS):
+                    new BaseResult(false,InfoConstant.DELETEFAIL);
         }catch (Throwable throwable){
             throwable.printStackTrace();
             return new BaseResult(false,InfoConstant.ORDERTHROWABLE);
@@ -113,8 +113,8 @@ public class DcOrderController {
     public Object deleteOrders(@RequestParam("id[]") List<Integer> id){
         try {
             return dcOrderService.deleteByPrimaryKeys(id)>0?
-                    new BaseResult(true,"批量删除订单成功"):
-                    new BaseResult(false,"批量删除订单失败");
+                    new BaseResult(true,InfoConstant.DELETESUCCESS):
+                    new BaseResult(false,InfoConstant.DELETEFAIL);
         }catch (Throwable throwable){
             throwable.printStackTrace();
             return new BaseResult(false,InfoConstant.ORDERTHROWABLE);

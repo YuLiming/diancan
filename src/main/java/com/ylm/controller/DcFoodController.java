@@ -145,9 +145,9 @@ public class DcFoodController {
         if (file.getSize() != 0) {
             String path = UploadUtil.uploadImgToQiuniu(file);
             System.out.println(path);
-            return new BaseResult(true,"上传图片成功",200,path);
+            return new BaseResult(true,InfoConstant.UPLOADIMGSUCCESS,200,path);
         }else {
-            return new BaseResult(false,"上传图片失败");
+            return new BaseResult(false,InfoConstant.UPLOADIMGFAIL);
         }
 
     }
